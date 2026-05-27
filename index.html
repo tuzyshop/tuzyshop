@@ -1,10 +1,10 @@
-a<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TuZy Kırtasiye Oyuncak | Erenler Sakarya</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -15,329 +15,608 @@ a<!DOCTYPE html>
             font-family: 'Poppins', sans-serif;
         }
 
-        body {
-            background-color: #f7f9fc;
-            color: #333;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Üst Menü */
-        nav {
-            background-color: #ffffff;
-            padding: 15px 5%;
+        body {
+            background-color: #f5f7fa;
+            color: #2d3436;
+        }
+
+        /* === ÜST BAR === */
+        .top-bar {
+            background: #2d3436;
+            color: white;
+            padding: 8px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            font-size: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .top-bar i {
+            color: #25d366;
+            margin-right: 5px;
+        }
+
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+
+        .top-bar a:hover {
+            color: #25d366;
+        }
+
+        /* === NAV === */
+        nav {
+            background-color: #ffffff;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 28px;
+            font-weight: 800;
             color: #e31e24;
+            text-decoration: none;
+            letter-spacing: -1px;
         }
 
         .logo span {
             color: #1a73e8;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
         .nav-links a {
             text-decoration: none;
             color: #555;
-            margin-left: 15px;
             font-weight: 600;
             font-size: 14px;
             transition: 0.3s;
+            position: relative;
         }
 
-        .nav-links a:hover {
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e31e24;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
             color: #e31e24;
         }
 
-        /* Hero Bölümü */
-        .hero {
-            background: linear-gradient(135deg, #e31e24 0%, #1a73e8 100%);
+        .cart-icon {
+            position: relative;
+            font-size: 20px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -12px;
+            background: #e31e24;
             color: white;
-            padding: 70px 5%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* === HERO === */
+        .hero {
+            background: linear-gradient(135deg, #e31e24 0%, #c0392b 50%, #1a73e8 100%);
+            color: white;
+            padding: 100px 5%;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 36px;
-            margin-bottom: 15px;
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .hero p {
-            font-size: 16px;
-            margin-bottom: 25px;
-            opacity: 0.9;
+            font-size: 18px;
+            margin-bottom: 35px;
+            opacity: 0.95;
+            line-height: 1.6;
         }
 
-        .btn-insta {
-            background-color: white;
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
             color: #e31e24;
-            padding: 12px 30px;
+            padding: 16px 40px;
             text-decoration: none;
             font-weight: 700;
             border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 16px;
             transition: 0.3s;
-            display: inline-block;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
-        /* Kapıya Teslimat Barı */
-        .features {
-            display: flex;
-            justify-content: center;
-            background: #25d366;
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
             color: white;
-            padding: 12px;
-            font-weight: 600;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        /* Öne Çıkan Ürünler Vitrini */
-        .products-section {
-            padding: 60px 5%;
-            text-align: center;
-        }
-
-        .products-section h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            color: #222;
-        }
-
-        .products-section p.subtitle {
-            color: #777;
-            margin-bottom: 40px;
-            font-size: 15px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            border: 1px solid #eee;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .product-img {
-            width: 100%;
-            height: 240px;
-            background-color: #eaeaea;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            color: #aaa;
-        }
-
-        /* Ürünlerin içine gerçek internet görselleri ekledim kırılmasın diye */
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: #e31e24;
-            color: white;
-            padding: 5px 12px;
-            font-size: 12px;
+            padding: 16px 40px;
+            text-decoration: none;
             font-weight: 700;
             border-radius: 50px;
+            font-size: 16px;
+            border: 2px solid white;
+            transition: 0.3s;
         }
 
-        .product-info {
-            padding: 20px;
+        .btn-secondary:hover {
+            background: white;
+            color: #e31e24;
+        }
+
+        /* === ÖZELLİKLER BAR === */
+        .features-bar {
             display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+            justify-content: center;
+            gap: 40px;
+            background: white;
+            padding: 25px 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            flex-wrap: wrap;
         }
 
-        .product-cat {
-            font-size: 12px;
-            color: #1a73e8;
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
         }
 
-        .product-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 10px;
-            line-height: 1.4;
+        .feature-item i {
+            font-size: 28px;
+            color: #25d366;
         }
 
-        .product-price {
-            font-size: 20px;
-            font-weight: 700;
-            color: #222;
-            margin-top: auto;
+        /* === KATEGORİ KUTULARI === */
+        .categories-section {
+            padding: 80px 5%;
+            text-align: center;
+            background: #f5f7fa;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: #2d3436;
             margin-bottom: 15px;
         }
 
-        .btn-order {
-            background: #1a73e8;
+        .section-subtitle {
+            color: #777;
+            font-size: 16px;
+            margin-bottom: 60px;
+        }
+
+        .category-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-box {
+            flex: 1;
+            min-width: 320px;
+            max-width: 500px;
+            height: 420px;
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+        }
+
+        .category-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.45);
+            z-index: 1;
+            transition: all 0.5s ease;
+        }
+
+        .category-box:hover::before {
+            background: rgba(0,0,0,0.2);
+        }
+
+        .category-box:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+        }
+
+        .category-box.kirtasiye {
+            background: linear-gradient(135deg, #e31e24, #c0392b);
+            background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .category-box.oyuncak {
+            background: linear-gradient(135deg, #1a73e8, #1557b0);
+            background-image: url('https://images.unsplash.com/photo-1558060370-d644479cb6f5?w=800&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .category-box-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .category-box-icon {
+            font-size: 80px;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .category-box-title {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .category-box-subtitle {
+            font-size: 17px;
+            opacity: 0.95;
+            font-weight: 400;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+            margin-bottom: 5px;
+        }
+
+        .category-box-btn {
+            margin-top: 30px;
+            background: white;
+            color: #333;
+            padding: 15px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            display: inline-block;
+            transition: all 0.4s ease;
+        }
+
+        .category-box.kirtasiye .category-box-btn {
+            color: #e31e24;
+        }
+
+        .category-box.oyuncak .category-box-btn {
+            color: #1a73e8;
+        }
+
+        .category-box:hover .category-box-btn {
+            box-shadow: 0 8px 30px rgba(255,255,255,0.5);
+            transform: scale(1.08);
+        }
+
+        /* === İLETİŞİM === */
+        .contact {
+            background-color: #fff;
+            padding: 80px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: space-between;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .contact-info h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .contact-info i {
+            color: #e31e24;
+            font-size: 24px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .map {
+            flex: 1;
+            min-width: 320px;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* === WHATSAPP FLOAT === */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 34px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 25px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: #2d3436;
             color: white;
             text-align: center;
-            padding: 10px;                                      text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 14px;                                    transition: 0.3s;
-            display: flex;
-            align-items: center;                                justify-content: center;
-            gap: 8px;                                       }
+            padding: 30px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
 
-        .btn-order:hover {                                      background: #e31e24;
-        }                                           
-        /* İletişim ve Adres */                             .contact {
-            background-color: #fff;                             padding: 60px 5%;
-            display: flex;                                      flex-wrap: wrap;
-            gap: 40px;                                          justify-content: space-between;
-        }                                           
-        .contact-info {                                         flex: 1;
-            min-width: 300px;                               }
+        footer span {
+            color: #e31e24;
+        }
 
-        .contact-info h2 {                                      font-size: 28px;
-            margin-bottom: 20px;                            }
-                                                            .contact-info p {
-            margin-bottom: 15px;                                font-size: 15px;
-            display: flex;                                      align-items: center;
-            gap: 10px;                                          line-height: 1.6;
-        }                                           
-        .contact-info i {                                       color: #e31e24;
-            font-size: 20px;                                }
-                                                            .map {
-            flex: 1;                                            min-width: 300px;
-            height: 300px;                                      border-radius: 15px;
-            overflow: hidden;                                   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }                                           
-        /* Sabit WhatsApp Butonu */                         .whatsapp-float {
-            position: fixed;                                    bottom: 30px;
-            right: 30px;                                        background-color: #25d366;
-            color: white;                                       width: 60px;
-            height: 60px;                                       border-radius: 50px;
-            text-align: center;                                 font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 100;                                       display: flex;
-            align-items: center;
-            justify-content: center;                            text-decoration: none;
-            transition: 0.3s;                               }
-                                                            footer {
-            background-color: #333;                             color: white;
-            text-align: center;
-            padding: 20px;                                      font-size: 13px;
-        }                                               </style>
-</head>                                             <body>
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            .hero p {
+                font-size: 15px;
+            }
+            .category-box {
+                height: 320px;
+                min-width: 260px;
+            }
+            .category-box-title {
+                font-size: 28px;
+            }
+            .category-box-icon {
+                font-size: 60px;
+            }
+            .nav-links {
+                gap: 12px;
+            }
+            .nav-links a {
+                font-size: 12px;
+            }
+            .features-bar {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
 
-    <nav>
-        <div class="logo">TuZy <span>Kırtasiye</span></div>
-        <div class="nav-links">                                 <a href="#anasayfa">Ana Sayfa</a>
-            <a href="#vitrin">Ürünlerimiz</a>                   <a href="#iletisim">İletişim</a>
-        </div>                                          </nav>
-                                                        <section class="hero" id="anasayfa">
-        <h1>TuZy Kırtasiye & Oyuncak Dünyası</h1>           <p>Aradığınız en kaliteli okul malzemeleri, lisanslı oyuncaklar ve kırtasiye ürünleri avantajlı fiyatlarla!</p>
-        <a href="https://www.instagram.com/tuzykirtasiyeoyuncak" target="_blank" class="btn-insta">
-            <i class="fab fa-instagram"></i> Instagram Vitrinimiz
-        </a>                                            </section>
-                                                        <div class="features">
-        <div><i class="fas fa-truck"></i> Erenler ve Çevresine Kapıya Teslimat Hizmetimiz Vardır! 📦</div>                                                      </div>
-                                                        <section class="products-section" id="vitrin">
-        <h2>Öne Çıkan Popüler Ürünler</h2>                  <p class="subtitle">Dükkanımızda bulabileceğiniz yüzlerce çeşit üründen bazıları</p>            
-        <div class="products-grid">
-                                                                <div class="product-card">
-                <div class="product-img">                               <span class="product-badge">Popüler</span>                                                              <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500&auto=format&fit=crop&q=60" alt="Akülü Araba">
-                </div>                                              <div class="product-info">
-                    <span class="product-cat">Oyuncak</span>
-                    <h3 class="product-title">Uzaktan Kumandalı Lisanslı Akülü Araba Çeşitleri</h3>
-                    <p class="product-price">Fiyat Sorun</p>
-                    <a href="https://wa.me/905347427560?text=Merhaba,%20akulu%20arabalar%20hakkinda%20bilgi%20alabilir%20miyim?" target="_blank" class="btn-order">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver / Bilgi Al                                              </a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="product-badge">Yeni Sezon</span>
-                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=60" alt="Okul Çantası">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Kırtasiye</span>
-                    <h3 class="product-title">Ortopedik ve Kaliteli İlkokul - Ortaokul Çantaları</h3>
-                    <p class="product-price">Fiyat Sorun</p>
-                    <a href="https://wa.me/905347427560?text=Merhaba,%20okul%20cantalari%20hakkinda%20bilgi%20alabilir%20miyim?" target="_blank" class="btn-order">                                                                     <i class="fab fa-whatsapp"></i> Sipariş Ver / Bilgi Al
-                    </a>                                            </div>                                          </div>
-                                                                <div class="product-card">
-                <div class="product-img">                               <img src="https://images.unsplash.com/photo-1559251606-c623743a6d76?w=500&auto=format&fit=crop&q=60" alt="Oyuncak Bebek">
-                </div>                                              <div class="product-info">
-                    <span class="product-cat">Oyuncak</span>
-                    <h3 class="product-title">Orijinal Barbie ve Figür Bebek Karakterleri</h3>
-                    <p class="product-price">Fiyat Sorun</p>
-                    <a href="https://wa.me/905347427560?text=Merhaba,%20figür%20bebekler%20hakkinda%20bilgi%20alabilir%20miyim?" target="_blank" class="btn-order">
-                        <i class="fab fa-whatsapp"></i> Sipariş Ver / Bilgi Al
-                    </a>                                            </div>                                          </div>
-                                                                <div class="product-card">
-                <div class="product-img">                               <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&auto=format&fit=crop&q=60" alt="Boya Seti">
-                </div>                                                             <div class="product-info">                              <span class="product-cat">Sanatsal</span>                                                               <h3 class="product-title">Profesyonel Akrilik ve Sulu Boya Set Çeşitleri</h3>                           <p class="product-price">Fiyat Sorun</p>                                                                <a href="https://wa.me/905347427560?text=Merhaba,%20sanatsal%20boyalar%20hakkinda%20bilgi%20alabilir%20miyim?" target="_blank" class="btn-order">                                                                   <i class="fab fa-whatsapp"></i> Sipariş Ver / Bilgi Al
-                    </a>                                            </div>
-            </div> 
-            <div class="product-card">
-    <div class="product-img">
-        <span class="product-badge">Yeni</span>
-        <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=500&auto=format&fit=crop&q=60" alt="Bisiklet">
-    </div>
-    <div class="product-info">
-        <span class="product-cat">Oyuncak</span>
-        <h3 class="product-title">Çocuk Bisikleti</h3>
-        <p class="product-price">Fiyat Sorun</p>
-     <a href="https://wa.me/905347427560?text=Merhaba, Çocuk Bisikleti hakkında bilgi almak istiyorum" class="btn-order">
-    <i class="fab fa-whatsapp"></i> Sipariş Ver / Bilgi Al
-</a>
-
-
-        </a>
-    </div>
-            </div>
-            
-                                                            </div>
-    </section>                                      
-    <section class="contact" id="iletisim">                 <div class="contact-info">
-            <h2>İletişim Bilgileri</h2>                         <p><i class="fas fa-map-marker-alt"></i> <strong>Adres:</strong> Yenigün Mahallesi, 15 Temmuz Bulvarı No: 20/A (Yeni Cami Karşısı / Palmiye Caddesi Başlangıcı) Erenler / SAKARYA</p>                           <p><i class="fas fa-phone"></i> <strong>Telefon:</strong> 0534 742 75 60</p>                            <p><i class="fab fa-instagram"></i> <strong>Instagram:</strong> @tuzykirtasiyeoyuncak</p>
+    <!-- ÜST BAR -->
+    <div class="top-bar">
+        <div>
+            <i class="fas fa-truck-fast"></i> Erenler ve Çevresine Ücretsiz Kapıya Teslimat
         </div>
-                                                            <div class="map">
-            <iframe src="http://googleusercontent.com/maps.google.com/2" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <div>
+            <a href="tel:05347427560"><i class="fas fa-phone"></i> 0534 742 75 60</a>
+            <a href="https://www.instagram.com/tuzykirtasiyeoyuncak" target="_blank"><i class="fab fa-instagram"></i> @tuzykirtasiyeoyuncak</a>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="logo">TuZy <span>Kırtasiye</span></a>
+        <div class="nav-links">
+            <a href="index.html" class="active">Ana Sayfa</a>
+            <a href="kirtasiye.html">Kırtasiye</a>
+            <a href="oyuncak.html">Oyuncak</a>
+            <a href="#iletisim">İletişim</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>TuZy Kırtasiye & Oyuncak Dünyası</h1>
+            <p>En kaliteli okul malzemeleri, lisanslı oyuncaklar ve kırtasiye ürünleri şimdi kapınızda! Siparişinizi hemen verin, ayağınıza gelsin.</p>
+            <div class="hero-buttons">
+                <a href="kirtasiye.html" class="btn-primary"><i class="fas fa-pencil-ruler"></i> Kırtasiye Ürünleri</a>
+                <a href="oyuncak.html" class="btn-secondary"><i class="fas fa-gamepad"></i> Oyuncak Ürünleri</a>
+            </div>
         </div>
     </section>
-                                                        <a href="https://wa.me/905347427560" class="whatsapp-float" target="_blank">
+
+    <!-- ÖZELLİKLER -->
+    <div class="features-bar">
+        <div class="feature-item"><i class="fas fa-truck-fast"></i> Kapıya Teslimat</div>
+        <div class="feature-item"><i class="fas fa-shield-halved"></i> Güvenli Ödeme</div>
+        <div class="feature-item"><i class="fas fa-headset"></i> 7/24 Destek</div>
+        <div class="feature-item"><i class="fas fa-rotate-left"></i> Kolay İade</div>
+    </div>
+
+    <!-- KATEGORİ KUTULARI -->
+    <section class="categories-section">
+        <h2 class="section-title">Ürün Kategorilerimiz</h2>
+        <p class="section-subtitle">Aradığınız her şey burada! Kategori seçin ve alışverişe başlayın.</p>
+
+        <div class="category-boxes">
+            <a href="kirtasiye.html" class="category-box kirtasiye">
+                <div class="category-box-content">
+                    <div class="category-box-icon"><i class="fas fa-pencil-ruler"></i></div>
+                    <div class="category-box-title">Kırtasiye</div>
+                    <div class="category-box-subtitle">Okul & Ofis Malzemeleri</div>
+                    <span class="category-box-btn">Alışverişe Başla <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="oyuncak.html" class="category-box oyuncak">
+                <div class="category-box-content">
+                    <div class="category-box-icon"><i class="fas fa-gamepad"></i></div>
+                    <div class="category-box-title">Oyuncak</div>
+                    <div class="category-box-subtitle">Eğlenceli Oyuncak Dünyası</div>
+                    <span class="category-box-btn">Alışverişe Başla <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- İLETİŞİM -->
+    <section class="contact" id="iletisim">
+        <div class="contact-info">
+            <h2>Bize Ulaşın</h2>
+            <p><i class="fas fa-map-location-dot"></i> <strong>Adres:</strong> Yenigün Mahallesi, 15 Temmuz Bulvarı No: 20/A (Yeni Cami Karşısı) Erenler / SAKARYA</p>
+            <p><i class="fas fa-phone-volume"></i> <strong>Telefon:</strong> 0534 742 75 60</p>
+            <p><i class="fas fa-envelope"></i> <strong>E-posta:</strong> tuzykirtasiye@gmail.com</p>
+            <p><i class="fab fa-instagram"></i> <strong>Instagram:</strong> @tuzykirtasiyeoyuncak</p>
+            <p><i class="fas fa-clock"></i> <strong>Çalışma Saatleri:</strong> Hafta içi 09:00 - 19:00 | Cumartesi 10:00 - 17:00</p>
+        </div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.5!2d30.4!3d40.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzAwLjAiTiAzMMKwMjQnMDAuMCJF!5e0!3m2!1str!2str!4v1620000000000" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/905347427560" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
-    </a>                                            
+    </a>
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 TuZy Kırtasiye Oyuncak. Tüm Hakları Saklıdır. | Web Developer: Ensar</p>                  </footer>
+        <p>© 2026 <span>TuZy Kırtasiye Oyuncak</span>. Tüm Hakları Saklıdır. | Web Developer: Ensar</p>
+    </footer>
 
 </body>
 </html>
