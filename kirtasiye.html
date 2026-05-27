@@ -3,232 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kırtasiye Ürünleri | TuZy</title>
+    <title>Kirtasiye Urunleri | TuZy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: #f5f7fa; color: #2d3436; }
-        nav { background-color: #fff; padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 28px; font-weight: 800; color: #e31e24; text-decoration: none; letter-spacing: -1px; }
+        body { background: #f5f7fa; color: #2d3436; padding-bottom: 100px; }
+        nav { background: #fff; padding: 12px 4%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 15px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 22px; font-weight: 800; color: #e31e24; text-decoration: none; }
         .logo span { color: #1a73e8; }
-        .nav-links { display: flex; align-items: center; gap: 25px; }
-        .nav-links a { text-decoration: none; color: #555; font-weight: 600; font-size: 14px; transition: 0.3s; position: relative; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #e31e24; transition: 0.3s; }
-        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-        .nav-links a:hover, .nav-links a.active { color: #e31e24; }
-        .cart-icon { position: relative; font-size: 22px; cursor: pointer; color: #333; background: none; border: none; }
-        .cart-count { position: absolute; top: -12px; right: -14px; background: #e31e24; color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-        .page-header { background: linear-gradient(135deg, #e31e24, #c0392b); color: white; padding: 60px 5%; text-align: center; position: relative; overflow: hidden; }
-        .page-header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%); animation: rotate 20s linear infinite; }
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .page-header-content { position: relative; z-index: 1; }
-        .page-header h1 { font-size: 38px; font-weight: 800; margin-bottom: 10px; }
-        .page-header p { font-size: 16px; opacity: 0.95; }
-        .back-btn { display: inline-block; margin-top: 20px; color: white; text-decoration: none; font-weight: 600; font-size: 15px; opacity: 0.9; transition: 0.3s; border: 2px solid rgba(255,255,255,0.5); padding: 10px 25px; border-radius: 50px; }
-        .back-btn:hover { background: white; color: #e31e24; opacity: 1; }
-        .products-section { padding: 60px 5%; max-width: 1300px; margin: 0 auto; }
-        .filter-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 15px; background: white; padding: 18px 25px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .filter-bar span { font-weight: 600; color: #555; font-size: 15px; }
-        .sort-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
-        .sort-btn { background: #f5f7fa; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; color: #555; transition: 0.3s; }
-        .sort-btn:hover, .sort-btn.active { background: #e31e24; color: white; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 30px; }
-        .product-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.06); transition: all 0.4s ease; display: flex; flex-direction: column; border: 1px solid #eee; position: relative; }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
-        .product-img { width: 100%; height: 240px; position: relative; overflow: hidden; }
-        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .product-card:hover .product-img img { transform: scale(1.08); }
-        .product-badge { position: absolute; top: 15px; left: 15px; background: #e31e24; color: white; padding: 6px 15px; font-size: 12px; font-weight: 700; border-radius: 50px; z-index: 2; }
-        .product-actions { position: absolute; top: 15px; right: 15px; display: flex; flex-direction: column; gap: 8px; z-index: 2; opacity: 0; transform: translateX(20px); transition: all 0.4s ease; }
-        .product-card:hover .product-actions { opacity: 1; transform: translateX(0); }
-        .product-actions button { width: 38px; height: 38px; border-radius: 50%; border: none; background: white; color: #555; cursor: pointer; font-size: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; }
-        .product-actions button:hover { background: #e31e24; color: white; }
-        .product-info { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-cat { font-size: 11px; color: #1a73e8; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .product-title { font-size: 18px; font-weight: 700; color: #2d3436; margin-bottom: 10px; line-height: 1.4; }
-        .product-rating { color: #f39c12; font-size: 13px; margin-bottom: 10px; }
-        .product-rating span { color: #999; margin-left: 5px; font-weight: 500; }
-        .product-price { font-size: 22px; font-weight: 800; color: #2d3436; margin-top: auto; margin-bottom: 15px; }
-        .product-price .old-price { text-decoration: line-through; color: #bbb; font-size: 15px; margin-left: 8px; font-weight: 500; }
-        .btn-add-cart { background: #e31e24; color: white; text-align: center; padding: 14px; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 15px; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px; border: none; cursor: pointer; width: 100%; }
-        .btn-add-cart:hover { background: #c0392b; box-shadow: 0 8px 25px rgba(227, 30, 36, 0.4); transform: translateY(-2px); }
-        .btn-add-cart.added { background: #25d366; }
-        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999; display: none; }
-        .cart-overlay.show { display: block; }
-        .cart-modal { position: fixed; top: 0; right: -450px; width: 400px; max-width: 100%; height: 100vh; background: white; box-shadow: -5px 0 30px rgba(0,0,0,0.15); z-index: 2000; transition: right 0.4s ease; padding: 30px; display: flex; flex-direction: column; overflow-y: auto; }
-        .cart-modal.open { right: 0; }
-        .btn-close-cart { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 26px; cursor: pointer; color: #555; transition: 0.3s; }
-        .btn-close-cart:hover { color: #e31e24; }
-        .cart-modal h3 { font-size: 24px; margin-bottom: 25px; font-weight: 800; color: #2d3436; }
-        .cart-empty { text-align: center; color: #999; padding: 40px 0; font-size: 15px; }
-        .cart-empty i { font-size: 50px; display: block; margin-bottom: 15px; color: #ddd; }
-        .cart-items-list { flex-grow: 1; overflow-y: auto; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; gap: 10px; }
-        .cart-item-info { flex-grow: 1; }
-        .cart-item-title { font-weight: 600; font-size: 14px; margin-bottom: 3px; }
-        .cart-item-price { font-size: 13px; color: #777; }
-        .cart-item-remove { background: none; border: none; color: #e31e24; cursor: pointer; font-size: 18px; padding: 5px; transition: 0.3s; }
-        .cart-item-remove:hover { transform: scale(1.2); }
-        .cart-total { font-size: 20px; font-weight: 800; margin-top: 20px; padding-top: 20px; border-top: 3px solid #2d3436; display: flex; justify-content: space-between; }
-        .order-form-section { margin-top: 20px; }
-        .order-form-section h4 { font-size: 16px; font-weight: 700; margin-bottom: 15px; color: #2d3436; }
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; font-size: 12px; font-weight: 600; color: #555; margin-bottom: 4px; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px 14px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 14px; transition: 0.3s; background: #f9f9f9; }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #e31e24; outline: none; background: white; }
-        .form-group textarea { resize: vertical; min-height: 70px; }
-        .btn-submit-order { background: #25d366; color: white; text-align: center; padding: 15px; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 16px; margin-top: 15px; display: block; border: none; cursor: pointer; width: 100%; transition: 0.3s; }
-        .btn-submit-order:hover { background: #1da851; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
-        .btn-clear-cart { background: #eee; color: #555; text-align: center; padding: 10px; border-radius: 10px; font-weight: 600; font-size: 13px; margin-top: 8px; display: block; border: none; cursor: pointer; width: 100%; transition: 0.3s; }
-        .btn-clear-cart:hover { background: #e31e24; color: white; }
-        .order-success { display: none; text-align: center; padding: 30px; background: #d4edda; border-radius: 15px; color: #155724; margin-top: 15px; }
-        .order-success.show { display: block; }
-        .order-success i { font-size: 50px; display: block; margin-bottom: 10px; }
-        .whatsapp-float { position: fixed; bottom: 40px; right: 40px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; font-size: 32px; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); } 70% { box-shadow: 0 0 0 25px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        .whatsapp-float:hover { transform: scale(1.15); }
-        .toast { position: fixed; bottom: 120px; right: 40px; background: #2d3436; color: white; padding: 15px 25px; border-radius: 50px; font-weight: 600; font-size: 14px; z-index: 3000; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
-        .toast.show { opacity: 1; transform: translateY(0); }
-        footer { background: #2d3436; color: white; text-align: center; padding: 25px; font-size: 13px; margin-top: 60px; }
+        .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: #555; font-weight: 600; font-size: 12px; }
+        .nav-links a.active { color: #e31e24; }
+        .sepet-btn { background: #e31e24; color: white; border: none; padding: 10px 18px; border-radius: 50px; font-weight: 700; font-size: 13px; cursor: pointer; white-space: nowrap; }
+        .header { background: linear-gradient(135deg, #e31e24, #c0392b); color: white; padding: 40px 5%; text-align: center; }
+        .header h1 { font-size: 28px; font-weight: 800; }
+        .header p { font-size: 14px; opacity: 0.9; margin-top: 5px; }
+        .header a { color: white; text-decoration: none; border: 2px solid white; padding: 8px 18px; border-radius: 50px; font-weight: 600; font-size: 13px; display: inline-block; margin-top: 12px; }
+        .urunler { padding: 30px 4%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .kart { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); }
+        .kart-img { width: 100%; height: 180px; position: relative; overflow: hidden; }
+        .kart-img img { width: 100%; height: 100%; object-fit: cover; }
+        .kart-badge { position: absolute; top: 10px; left: 10px; background: #e31e24; color: white; padding: 4px 10px; font-size: 10px; font-weight: 700; border-radius: 50px; }
+        .kart-info { padding: 15px; }
+        .kart-kat { font-size: 10px; color: #1a73e8; font-weight: 700; text-transform: uppercase; }
+        .kart-ad { font-size: 15px; font-weight: 700; margin: 4px 0 8px; line-height: 1.3; }
+        .kart-fiyat { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+        .kart-fiyat .eski { text-decoration: line-through; color: #bbb; font-size: 13px; margin-left: 5px; font-weight: 500; }
+        .ekle-btn { background: #e31e24; color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; width: 100%; transition: 0.2s; }
+        .ekle-btn:active { background: #25d366; transform: scale(0.97); }
+
+        .alt-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 12px 4%; box-shadow: 0 -4px 20px rgba(0,0,0,0.12); z-index: 50; display: none; align-items: center; justify-content: space-between; gap: 10px; }
+        .alt-bar.acik { display: flex; }
+        .alt-bar-sol span { display: block; font-size: 11px; color: #777; }
+        .alt-bar-sol strong { font-size: 16px; color: #2d3436; }
+        .alt-bar-btn { background: #e31e24; color: white; border: none; padding: 10px 22px; border-radius: 50px; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; }
+
+        .karartma { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 150; display: none; }
+        .karartma.acik { display: block; }
+
+        .sepet-sayfa { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; height: 100dvh; background: white; z-index: 200; transition: right 0.35s ease; padding: 20px 15px; overflow-y: auto; box-shadow: -5px 0 25px rgba(0,0,0,0.2); }
+        .sepet-sayfa.acik { right: 0; }
+        .sepet-sayfa h3 { font-size: 20px; font-weight: 800; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 2px solid #eee; }
+        .sepet-sayfa .kapat { position: absolute; top: 12px; right: 12px; background: #f0f0f0; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .sepet-bos { text-align: center; color: #999; padding: 40px 0; }
+        .sepet-bos i { font-size: 45px; display: block; margin-bottom: 8px; }
+        .sepet-oge { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; gap: 8px; }
+        .sepet-oge-ad { font-weight: 600; font-size: 13px; }
+        .sepet-oge-fiyat { font-size: 11px; color: #777; }
+        .sepet-oge-sil { background: none; border: none; color: #e31e24; font-size: 18px; cursor: pointer; padding: 4px; }
+        .sepet-toplam { font-size: 17px; font-weight: 800; margin-top: 12px; padding-top: 12px; border-top: 2px solid #333; display: flex; justify-content: space-between; }
+        .sepet-form { margin-top: 12px; }
+        .sepet-form h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+        .sepet-form label { font-size: 10px; font-weight: 600; display: block; margin-bottom: 2px; color: #555; }
+        .sepet-form input, .sepet-form textarea, .sepet-form select { width: 100%; padding: 9px 10px; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 7px; font-size: 13px; background: #f9f9f9; }
+        .sepet-form textarea { min-height: 50px; resize: vertical; }
+        .btn-siparis { background: #25d366; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; width: 100%; margin-top: 5px; }
+        .btn-bosalt { background: #eee; color: #777; border: none; padding: 9px; border-radius: 8px; font-size: 12px; cursor: pointer; width: 100%; margin-top: 5px; }
+        .basarili { display: none; text-align: center; padding: 18px; background: #d4edda; border-radius: 10px; margin-top: 8px; color: #155724; font-size: 13px; }
+        .basarili.goster { display: block; }
+        .basarili i { font-size: 35px; display: block; margin-bottom: 5px; }
+        footer { background: #2d3436; color: white; text-align: center; padding: 18px; font-size: 11px; margin-top: 30px; }
         footer span { color: #e31e24; font-weight: 700; }
-        @media (max-width: 768px) { .products-grid { grid-template-columns: 1fr; } .page-header h1 { font-size: 26px; } .cart-modal { width: 100%; right: -100%; } .nav-links { gap: 12px; } .nav-links a { font-size: 12px; } }
+        .wa-buton { position: fixed; bottom: 80px; right: 15px; background: #25d366; color: white; width: 50px; height: 50px; border-radius: 50%; font-size: 26px; z-index: 40; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+
+        @media (max-width: 480px) {
+            nav { padding: 10px 3%; }
+            .logo { font-size: 19px; }
+            .nav-links a { font-size: 11px; }
+            .nav-links { gap: 6px; }
+            .sepet-btn { padding: 8px 14px; font-size: 12px; }
+            .header { padding: 30px 4%; }
+            .header h1 { font-size: 24px; }
+            .urunler { padding: 20px 3%; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+            .kart-img { height: 140px; }
+            .kart-info { padding: 12px; }
+            .kart-ad { font-size: 13px; }
+            .kart-fiyat { font-size: 15px; }
+            .ekle-btn { font-size: 12px; padding: 8px; }
+            .sepet-sayfa { max-width: 100%; padding: 15px; }
+            .alt-bar { padding: 10px 3%; }
+            .wa-buton { bottom: 70px; right: 10px; width: 45px; height: 45px; font-size: 22px; }
+            body { padding-bottom: 90px; }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">TuZy <span>Kırtasiye</span></a>
+        <a href="index.html" class="logo">TuZy <span>Kirtasiye</span></a>
         <div class="nav-links">
             <a href="index.html">Ana Sayfa</a>
-            <a href="kirtasiye.html" class="active">Kırtasiye</a>
+            <a href="kirtasiye.html" class="active">Kirtasiye</a>
             <a href="oyuncak.html">Oyuncak</a>
-            <a href="index.html#iletisim">İletişim</a>
-            <button class="cart-icon" onclick="toggleCart()">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count" id="cartCount">0</span>
-            </button>
+            <button class="sepet-btn" onclick="sepetiAc()"><i class="fas fa-shopping-cart"></i> Sepet (<span id="adet">0</span>)</button>
         </div>
     </nav>
 
-    <section class="page-header">
-        <div class="page-header-content">
-            <h1><i class="fas fa-pencil-ruler"></i> Kırtasiye Ürünleri</h1>
-            <p>Okul ve ofis ihtiyaçlarınız için en kaliteli kırtasiye malzemeleri</p>
-            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Ana Sayfaya Dön</a>
-        </div>
-    </section>
+    <div class="header">
+        <h1><i class="fas fa-pencil-ruler"></i> Kirtasiye Urunleri</h1>
+        <p>Okul ve ofis ihtiyaclariniz icin en kaliteli kirtasiye malzemeleri</p>
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Ana Sayfa</a>
+    </div>
 
-    <section class="products-section">
-        <div class="filter-bar">
-            <span><i class="fas fa-cube"></i> Toplam <strong>6</strong> ürün gösteriliyor</span>
-            <div class="sort-buttons">
-                <button class="sort-btn active">Tümü</button>
-                <button class="sort-btn">En Popüler</button>
-                <button class="sort-btn">En Yeni</button>
-                <button class="sort-btn">Fiyat Artan</button>
-            </div>
+    <div class="urunler">
+
+        <div class="kart">
+            <div class="kart-img"><span class="kart-badge">Yeni Sezon</span><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=60" alt="Canta"></div>
+            <div class="kart-info"><span class="kart-kat">Kirtasiye</span><h3 class="kart-ad">Ortopedik Okul Cantasi</h3><p class="kart-fiyat">699 TL <span class="eski">899 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Okul Cantasi', 699)">Sepete Ekle</button></div>
         </div>
 
-        <div class="products-grid">
-
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="product-badge">Yeni Sezon</span>
-                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=60" alt="Okul Çantası" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Kırtasiye</span>
-                    <h3 class="product-title">Ortopedik ve Kaliteli İlkokul - Ortaokul Çantaları</h3>
-                    <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(28 Değerlendirme)</span></div>
-                    <p class="product-price">699 TL <span class="old-price">899 TL</span></p>
-                    <button class="btn-add-cart" onclick="addToCart('Okul Çantası', 699, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="product-badge">Çok Satan</span>
-                    <img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=500&auto=format&fit=crop&q=60" alt="Defter Seti" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Kırtasiye</span>
-                    <h3 class="product-title">Lisanslı Defter, Kalem ve Kırtasiye Setleri</h3>
-                    <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(35 Değerlendirme)</span></div>
-                    <p class="product-price">249 TL <span class="old-price">349 TL</span></p>
-                    <button class="btn-add-cart" onclick="addToCart('Defter Seti', 249, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&auto=format&fit=crop&q=60" alt="Boya Seti" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Sanatsal</span>
-                    <h3 class="product-title">Profesyonel Akrilik ve Sulu Boya Set Çeşitleri</h3>
-                    <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> <span>(19 Değerlendirme)</span></div>
-                    <p class="product-price">179 TL</p>
-                    <button class="btn-add-cart" onclick="addToCart('Boya Seti', 179, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="product-badge">İndirim</span>
-                    <img src="https://images.unsplash.com/photo-1586766993160-9c2f4e0b62e1?w=500&auto=format&fit=crop&q=60" alt="Kalem Seti" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Kırtasiye</span>
-                    <h3 class="product-title">Lisanslı Karakterli Kalem ve Silgi Setleri</h3>
-                    <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(22 Değerlendirme)</span></div>
-                    <p class="product-price">89 TL <span class="old-price">129 TL</span></p>
-                    <button class="btn-add-cart" onclick="addToCart('Kalem Seti', 89, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1526768759651-10c9e34be3da?w=500&auto=format&fit=crop&q=60" alt="Beslenme Çantası" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Kırtasiye</span>
-                    <h3 class="product-title">Termal Beslenme Çantası ve Matara Setleri</h3>
-                    <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> <span>(14 Değerlendirme)</span></div>
-                    <p class="product-price">349 TL</p>
-                    <button class="btn-add-cart" onclick="addToCart('Beslenme Çantası', 349, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="product-badge">Yeni</span>
-                    <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=500&auto=format&fit=crop&q=60" alt="Kırtasiye Seti" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Kırtasiye</span>
-                    <h3 class="product-title">Okula Dönüş Kırtasiye Seti (Özel Paket)</h3>
-                    <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(41 Değerlendirme)</span></div>
-                    <p class="product-price">449 TL <span class="old-price">599 TL</span></p>
-                    <button class="btn-add-cart" onclick="addToCart('Kırtasiye Seti', 449, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
+        <div class="kart">
+            <div class="kart-img"><span class="kart-badge">Cok Satan</span><img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=500&auto=format&fit=crop&q=60" alt="Defter"></div>
+            <div class="kart-info"><span class="kart-kat">Kirtasiye</span><h3 class="kart-ad">Lisansli Defter ve Kalem Seti</h3><p class="kart-fiyat">249 TL <span class="eski">349 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Defter Seti', 249)">Sepete Ekle</button></div>
         </div>
-    </section>
 
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+        <div class="kart">
+            <div class="kart-img"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&auto=format&fit=crop&q=60" alt="Boya"></div>
+            <div class="kart-info"><span class="kart-kat">Sanatsal</span><h3 class="kart-ad">Akrilik ve Sulu Boya Seti</h3><p class="kart-fiyat">179 TL</p><button class="ekle-btn" onclick="sepeteEkle('Boya Seti', 179)">Sepete Ekle</button></div>
+        </div>
 
-    <div class="cart-modal" id="cartModal">
-        <button class="btn-close-cart" onclick="toggleCart()">&times;</button>
+        <div class="kart">
+            <div class="kart-img"><span class="kart-badge">Indirim</span><img src="https://images.unsplash.com/photo-1586766993160-9c2f4e0b62e1?w=500&auto=format&fit=crop&q=60" alt="Kalem"></div>
+            <div class="kart-info"><span class="kart-kat">Kirtasiye</span><h3 class="kart-ad">Lisansli Kalem ve Silgi Seti</h3><p class="kart-fiyat">89 TL <span class="eski">129 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Kalem Seti', 89)">Sepete Ekle</button></div>
+        </div>
+
+        <div class="kart">
+            <div class="kart-img"><img src="https://images.unsplash.com/photo-1526768759651-10c9e34be3da?w=500&auto=format&fit=crop&q=60" alt="Beslenme"></div>
+            <div class="kart-info"><span class="kart-kat">Kirtasiye</span><h3 class="kart-ad">Termal Beslenme Cantasi</h3><p class="kart-fiyat">349 TL</p><button class="ekle-btn" onclick="sepeteEkle('Beslenme Cantasi', 349)">Sepete Ekle</button></div>
+        </div>
+
+        <div class="kart">
+            <div class="kart-img"><span class="kart-badge">Yeni</span><img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=500&auto=format&fit=crop&q=60" alt="Set"></div>
+            <div class="kart-info"><span class="kart-kat">Kirtasiye</span><h3 class="kart-ad">Okula Donus Ozel Paket</h3><p class="kart-fiyat">449 TL <span class="eski">599 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Kirtasiye Seti', 449)">Sepete Ekle</button></div>
+        </div>
+
+    </div>
+
+    <!-- ALT SEPET BARI -->
+    <div class="alt-bar" id="altBar">
+        <div class="alt-bar-sol">
+            <span id="altAdet">0 urun</span>
+            <strong id="altToplam">0 TL</strong>
+        </div>
+        <button class="alt-bar-btn" onclick="sepetiAc()"><i class="fas fa-shopping-basket"></i> Sepete Git</button>
+    </div>
+
+    <!-- KARARTMA -->
+    <div class="karartma" id="karartma" onclick="sepetiKapat()"></div>
+
+    <!-- SEPET PANEL -->
+    <div class="sepet-sayfa" id="sepetSayfa">
+        <button class="kapat" onclick="sepetiKapat()">&times;</button>
         <h3><i class="fas fa-shopping-basket"></i> Sepetim</h3>
-        <div class="cart-items-list" id="cartItems">
-            <div class="cart-empty"><i class="fas fa-shopping-cart"></i><p>Sepetiniz henüz boş</p></div>
-        </div>
-        <div class="cart-total" id="cartTotal" style="display:none;"><span>Toplam:</span><span id="totalPrice">0 TL</span></div>
-        <div class="order-form-section" id="orderFormSection" style="display:none;">
+        <div id="sepetListe"><div class="sepet-bos"><i class="fas fa-shopping-cart"></i><p>Sepetiniz bos</p></div></div>
+        <div class="sepet-toplam" id="sepetToplam" style="display:none;"><span>Toplam:</span><span id="toplamFiyat">0 TL</span></div>
+        <div class="sepet-form" id="sepetForm" style="display:none;">
             <h4><i class="fas fa-truck"></i> Teslimat Bilgileri</h4>
-            <div class="form-group"><label>Ad Soyad *</label><input type="text" id="customerName" placeholder="Adınızı ve soyadınızı yazın" required></div>
-            <div class="form-group"><label>Telefon Numarası *</label><input type="tel" id="customerPhone" placeholder="05XX XXX XX XX" required></div>
-            <div class="form-group"><label>E-posta Adresi</label><input type="email" id="customerEmail" placeholder="ornek@email.com"></div>
-            <div class="form-
+            <label>Ad Soyad *</label><input type="text" id="adInp" placeholder="Adiniz soyadiniz">
+            <label>Telefon *</label><input type="tel" id="telInp" placeholder="05XX XXX XX XX">
+            <label>Adres *</label><textarea id="adresInp" placeholder="Tam adresiniz"></textarea>
+            <label>Odeme Yontemi *</label><select id="odemeInp"><option value="">Seciniz</option><option>Kapida Nakit</option><option>Kapida Kart</option><option>Havale/EFT</option></select>
+            <button class="btn-siparis" onclick="siparisVer()"><i class="fas fa-check-circle"></i> Siparisi Tamamla</button>
+            <button class="btn-bosalt" onclick="sepetiBosalt()"><i class="fas fa-trash"></i> Sepeti Bosalt</button>
+            <div class="basarili" id="basarili"><i class="fas fa-check-circle"></i><strong>Siparis Alindi!</strong><p>En kisa surede donecegiz.</p></div>
+        </div>
+    </div>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/905347427560" class="wa-buton" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <footer><p>2026 <span>TuZy Kirtasiye Oyuncak</span> | Web Developer: <span>Ensar</span></p></footer>
+
+    <script>
+        var sepet = [];
+
+        function sepeteEkle(ad, fiyat) {
+            sepet.push({ ad: ad, fiyat: fiyat });
+            guncelle();
+            alert(ad + ' sepete eklendi! (' + fiyat + ' TL)');
+        }
+
+        function guncelle() {
+            document.getElementById('adet').textContent = sepet.length;
+            var liste = document.getElementById('sepetListe');
+            var toplamDiv = document.getElementById('sepetToplam');
+            var formDiv = document.getElementById('sepetForm');
+
+            if (sepet.length === 0) {
+                liste.innerHTML = '<div class="sepet-bos"><i class="fas fa-shopping-cart"></i><p>Sepetiniz bos</p></div>';
+                toplamDiv.style.display = 'none';
+                formDiv.style.display = 'none';
+                document.getElementById('altBar').classList.remove('acik');
+            } else {
+                var html = '';
+                var toplam = 0;
+                for (var i = 0; i < sepet.length; i++) {
+                    html += '<div class="sepet-oge"><div><div class="sepet-oge-ad">' + sepet[i].ad + '</div><div class="sepet-oge-fiyat">' + sepet[i].fiyat + ' TL</div></div><button class="sepet-oge-sil" onclick="urunSil(' + i + ')"><i class="fas fa-times-circle"></i></button></div>';
+                    toplam += sepet[i].fiyat;
+                }
+                liste.innerHTML = html;
+                toplamDiv.style.display = 'flex';
+                document.getElementById('toplamFiyat').textContent = toplam + ' TL';
+                formDiv.style.display = 'block';
+
+                document.getElementById('altBar').classList.add('acik');
+                document.getElementById('altAdet').textContent = sepet.length + ' urun';
+                document.getElementById('altToplam').textContent = toplam + ' TL';
+            }
+        }
+
+        function urunSil(index) {
+            sepet.splice(index, 1);
+            guncelle();
+        }
+
+        function sepetiBosalt() {
+            sepet = [];
+            guncelle();
+            document.getElementById('basarili').classList.remove('goster');
+        }
+
+        function sepetiAc() {
+            document.getElementById('sepetSayfa').classList.add('acik');
+            document.getElementById('karartma').classList.add('acik');
+        }
+
+        function sepetiKapat() {
+            document.getElementById('sepetSayfa').classList.remove('acik');
+            document.getElementById('karartma').classList.remove('acik');
+        }
+
+        function siparisVer() {
+            var ad = document.getElementById('adInp').value;
+            var tel = document.getElementById('telInp').value;
+            var adres = document.getElementById('adresInp').value;
+            var odeme = document.getElementById('odemeInp').value;
+
+            if (!ad || !tel || !adres || !odeme) {
+                alert('Lutfen tum alanlari doldurun!');
+                return;
+            }
+
+            document.getElementById('basarili').classList.add('goster');
+            document.getElementById('sepetForm').style.display = 'none';
+            sepet = [];
+            document.getElementById('adet').textContent = '0';
+            document.getElementById('sepetListe').innerHTML = '';
+            document.getElementById('sepetToplam').style.display = 'none';
+            document.getElementById('altBar').classList.remove('acik');
+            alert('Siparisiniz basariyla alindi! En kisa surede sizi arayacagiz.');
+            setTimeout(function() { sepetiKapat(); }, 2000);
+        }
+    </script>
+</body>
+</html>
