@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyuncak Ürünleri | TuZy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #2d3436;
+        }
+
+        /* === NAV === */
+        nav {
+            background-color: #ffffff;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #e31e24;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #1a73e8;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1a73e8;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #1a73e8;
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 22px;
+            cursor: pointer;
+            color: #333;
+            background: none;
+            border: none;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -12px;
+            right: -14px;
+            background: #e31e24;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* === SAYFA HEADER === */
+        .page-header {
+            background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%);
+            color: white;
+            padding: 60px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            opacity: 0.9;
+            transition: 0.3s;
+            border: 2px solid rgba(255,255,255,0.5);
+            padding: 10px 25px;
+            border-radius: 50px;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #1a73e8;
+            opacity: 1;
+        }
+
+        /* === FİLTRE BAR === */
+        .products-section {
+            padding: 60px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+            background: white;
+            padding: 18px 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .filter-bar span {
+            font-weight: 600;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .filter-bar span i {
+            color: #1a73e8;
+            margin-right: 5px;
+        }
+
+        .sort-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .sort-btn {
+            background: #f5f7fa;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            color: #555;
+            transition: 0.3s;
+        }
+
+        .sort-btn:hover,
+        .sort-btn.active {
+            background: #1a73e8;
+            color: white;
+        }
+
+        /* === ÜRÜNLER === */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.08);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #1a73e8;
+            color: white;
+            padding: 6px 15px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 50px;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.4);
+        }
+
+        .product-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 2;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .product-actions button {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            color: #555;
+            cursor: pointer;
+            font-size: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .product-actions button:hover {
+            background: #1a73e8;
+            color: white;
+        }
+
+        .product-info {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-cat {
+            font-size: 11px;
+            color: #e31e24;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .product-rating {
+            color: #f39c12;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .product-rating span {
+            color: #999;
+            margin-left: 5px;
+            font-weight: 500;
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #2d3436;
+            margin-top: auto;
+            margin-bottom: 15px;
+        }
+
+        .product-price .old-price {
+            text-decoration: line-through;
+            color: #bbb;
+            font-size: 15px;
+            margin-left: 8px;
+            font-weight: 500;
+        }
+
+        .btn-add-cart {
+            background: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-add-cart:hover {
+            background: #1557b0;
+            box-shadow: 0 8px 25px rgba(26, 115, 232, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-add-cart.added {
+            background: #25d366;
+        }
+
+        /* === SEPET MODAL === */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            display: none;
+        }
+
+        .cart-overlay.show {
+            display: block;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 400px;
+            max-width: 100%;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.15);
+            z-index: 2000;
+            transition: right 0.4s ease;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .cart-modal.open {
+            right: 0;
+        }
+
+        .btn-close-cart {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #555;
+            transition: 0.3s;
+        }
+
+        .btn-close-cart:hover {
+            color: #e31e24;
+        }
+
+        .cart-modal h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-weight: 800;
+            color: #2d3436;
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: #999;
+            padding: 40px 0;
+            font-size: 15px;
+        }
+
+        .cart-empty i {
+            font-size: 50px;
+            display: block;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .cart-items-list {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            gap: 10px;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .cart-item-price {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #e31e24;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            transition: 0.3s;
+        }
+
+        .cart-item-remove:hover {
+            transform: scale(1.2);
+        }
+
+        .cart-total {
+            font-size: 20px;
+            font-weight: 800;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 3px solid #2d3436;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* === SİPARİŞ FORMU === */
+        .order-form-section {
+            margin-top: 20px;
+        }
+
+        .order-form-section h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: 0.3s;
+            background: #f9f9f9;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #1a73e8;
+            outline: none;
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        .btn-submit-order {
+            background: #25d366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 15px;
+            display: block;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-submit-order:hover {
+            background: #1da851;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-clear-cart {
+            background: #eee;
+            color: #555;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            margin-top: 8px;
+            display: block;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-clear-cart:hover {
+            background: #e31e24;
+            color: white;
+        }
+
+        .order-success {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: #d4edda;
+            border-radius: 15px;
+            color: #155724;
+            margin-top: 15px;
+        }
+
+        .order-success.show {
+            display: block;
+        }
+
+        .order-success i {
+            font-size: 50px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* === WHATSAPP === */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #25d366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            font-size: 32px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 25px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+        }
+
+        /* === TOAST === */
+        .toast {
+            position: fixed;
+            bottom: 120px;
+            right: 40px;
+            background: #2d3436;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 3000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+            margin-top: 60px;
+        }
+
+        footer span {
+            color: #e31e24;
+            font-weight: 700;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 26px;
+            }
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+            .nav-links {
+                gap: 12px;
+            }
+            .nav-links a {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="logo">TuZy <span>Kırtasiye</span></a>
+        <div class="nav-links">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="kirtasiye.html">Kırtasiye</a>
+            <a href="oyuncak.html" class="active">Oyuncak</a>
+            <a href="index.html#iletisim">İletişim</a>
+            <button class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- SAYFA HEADER -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1><i class="fas fa-gamepad"></i> Oyuncak Dünyası</h1>
+            <p>Çocuklarınızın hayal gücünü geliştirecek birbirinden eğlenceli oyuncaklar</p>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Ana Sayfaya Dön</a>
+        </div>
+    </section>
+
+    <!-- ÜRÜNLER -->
+    <section class="products-section">
+        <div class="filter-bar">
+            <span><i class="fas fa-cube"></i> Toplam <strong>6</strong> ürün gösteriliyor</span>
+            <div class="sort-buttons">
+                <button class="sort-btn active">Tümü</button>
+                <button class="sort-btn">En Popüler</button>
+                <button class="sort-btn">En Yeni</button>
+                <button class="sort-btn">Fiyat Artan</button>
+            </div>
+        </div>
+
+        <div class="products-grid">
+
+            <!-- ÜRÜN 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <span class="product-badge">Popüler</span>
+                    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500&auto=format&fit=crop&q=60" alt="Akülü Araba" loading="lazy">
+                    <div class="product-actions">
+                        <button title="Favorilere Ekle"><i class="far fa-heart"></i></button>
+                        <button title="Hızlı Bak"><i class="far fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="p
