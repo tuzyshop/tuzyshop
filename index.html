@@ -3,671 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TuZy Kırtasiye ve Oyuncak - Erenler Sakarya'da en kaliteli okul malzemeleri, lisanslı oyuncaklar ve kırtasiye ürünleri. Kapıya teslimat!">
-    <meta name="keywords" content="kırtasiye, oyuncak, okul malzemeleri, Erenler, Sakarya, TuZy">
-    <title>TuZy Kırtasiye Oyuncak | Erenler Sakarya</title>
+    <title>TuZy Kirtasiye Oyuncak | Erenler Sakarya</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: #f5f7fa; color: #2d3436; line-height: 1.6; }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        .top-bar { background: #1a1a2e; color: white; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 11px; flex-wrap: wrap; gap: 8px; }
+        .top-bar i { color: #25d366; margin-right: 4px; }
+        .top-bar a { color: white; text-decoration: none; margin-left: 10px; transition: 0.3s; font-weight: 500; }
+        .top-bar a:hover { color: #25d366; }
 
-        body {
-            background: #f5f7fa;
-            color: #2d3436;
-            line-height: 1.6;
-        }
+        nav { background: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 25px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 12px; }
+        .logo { font-size: 26px; font-weight: 900; color: #e31e24; text-decoration: none; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+        .logo i { font-size: 28px; color: #1a73e8; }
+        .logo span { color: #1a73e8; }
+        .nav-links { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: #555; font-weight: 600; font-size: 13px; transition: 0.3s; position: relative; padding: 5px 0; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #e31e24; transition: 0.3s; border-radius: 2px; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover, .nav-links a.active { color: #e31e24; }
+        .nav-btn { background: #e31e24; color: white; border: none; padding: 10px 20px; border-radius: 50px; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 6px; }
+        .nav-btn:hover { background: #c0392b; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(227,30,36,0.3); }
 
-        /* ===== ÜST BAR ===== */
-        .top-bar {
-            background: #1a1a2e;
-            color: white;
-            padding: 8px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 11px;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+        .hero { background: linear-gradient(135deg, #e31e24 0%, #c0392b 30%, #1a73e8 100%); color: white; padding: 100px 5%; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%); animation: don 25s linear infinite; }
+        @keyframes don { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .hero-ic { position: relative; z-index: 1; max-width: 750px; margin: 0 auto; }
+        .hero-etiket { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; font-size: 12px; font-weight: 600; margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
+        .hero h1 { font-size: 44px; font-weight: 900; line-height: 1.2; margin-bottom: 15px; text-shadow: 2px 2px 8px rgba(0,0,0,0.2); }
+        .hero p { font-size: 17px; opacity: 0.95; margin-bottom: 35px; line-height: 1.7; }
+        .hero-btnlar { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn-birincil { background: white; color: #e31e24; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 15px; transition: 0.3s; box-shadow: 0 8px 25px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 8px; }
+        .btn-birincil:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.3); }
+        .btn-ikincil { background: transparent; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 15px; border: 2px solid white; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-ikincil:hover { background: white; color: #e31e24; }
 
-        .top-bar i {
-            color: #25d366;
-            margin-right: 4px;
-        }
+        .ozellikler { display: flex; justify-content: center; gap: 40px; background: white; padding: 30px 5%; box-shadow: 0 2px 15px rgba(0,0,0,0.05); flex-wrap: wrap; text-align: center; }
+        .ozellik { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 120px; }
+        .ozellik i { font-size: 32px; color: #25d366; background: #f0fff4; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .ozellik strong { font-size: 14px; color: #2d3436; }
+        .ozellik span { font-size: 11px; color: #777; }
 
-        .top-bar a {
-            color: white;
-            text-decoration: none;
-            margin-left: 12px;
-            transition: 0.3s;
-            font-weight: 500;
-        }
-
-        .top-bar a:hover {
-            color: #25d366;
-        }
-
-        .top-bar .sosyal {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .top-bar .sosyal a {
-            background: rgba(255,255,255,0.1);
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            margin: 0;
-        }
-
-        .top-bar .sosyal a:hover {
-            background: #25d366;
-            color: white;
-        }
-
-        /* ===== NAV ===== */
-        nav {
-            background: #fff;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: 900;
-            color: #e31e24;
-            text-decoration: none;
-            letter-spacing: -1px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo i {
-            font-size: 30px;
-            color: #1a73e8;
-        }
-
-        .logo span {
-            color: #1a73e8;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 600;
-            font-size: 13px;
-            transition: 0.3s;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #e31e24;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #e31e24;
-        }
-
-        .nav-btn {
-            background: #e31e24;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .nav-btn:hover {
-            background: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(227,30,36,0.3);
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            background: linear-gradient(135deg, #e31e24 0%, #c0392b 30%, #1a73e8 100%);
-            color: white;
-            padding: 100px 5%;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
-            animation: don 25s linear infinite;
-        }
-
-        @keyframes don {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .hero-ic {
-            position: relative;
-            z-index: 1;
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        .hero-etiket {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: 44px;
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-        }
-
-        .hero p {
-            font-size: 17px;
-            opacity: 0.95;
-            margin-bottom: 35px;
-            line-height: 1.7;
-        }
-
-        .hero-btnlar {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-birincil {
-            background: white;
-            color: #e31e24;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            transition: 0.3s;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-birincil:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
-        }
-
-        .btn-ikincil {
-            background: transparent;
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            border: 2px solid white;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-ikincil:hover {
-            background: white;
-            color: #e31e24;
-        }
-
-        /* ===== OZELLIKLER ===== */
-        .ozellikler {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            background: white;
-            padding: 30px 5%;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            flex-wrap: wrap;
-            text-align: center;
-        }
-
-        .ozellik {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            min-width: 120px;
-        }
-
-        .ozellik i {
-            font-size: 32px;
-            color: #25d366;
-            background: #f0fff4;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ozellik strong {
-            font-size: 14px;
-            color: #2d3436;
-        }
-
-        .ozellik span {
-            font-size: 11px;
-            color: #777;
-        }
-
-        /* ===== KATEGORILER ===== */
-        .kategoriler {
-            padding: 80px 5%;
-            text-align: center;
-            background: #f5f7fa;
-        }
-
-        .bolum-baslik {
-            font-size: 34px;
-            font-weight: 900;
-            color: #2d3436;
-            margin-bottom: 10px;
-        }
-
-        .bolum-alt {
-            color: #777;
-            font-size: 15px;
-            margin-bottom: 50px;
-        }
-
-        .kutu-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .kutu {
-            flex: 1;
-            min-width: 300px;
-            max-width: 480px;
-            height: 400px;
-            border-radius: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            transition: all 0.5s ease;
-        }
-
-        .kutu::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.45);
-            z-index: 1;
-            transition: all 0.5s ease;
-        }
-
-        .kutu:hover::before {
-            background: rgba(0,0,0,0.2);
-        }
-
-        .kutu:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
-        }
-
-        .kutu.kirtasiye {
-            background: linear-gradient(135deg, #e31e24, #c0392b);
-            background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: overlay;
-        }
-
-        .kutu.oyuncak {
-            background: linear-gradient(135deg, #1a73e8, #1557b0);
-            background-image: url('https://images.unsplash.com/photo-1558060370-d644479cb6f5?w=800&auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: overlay;
-        }
-
-        .kutu-ic {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .kutu-ikon {
-            font-size: 80px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
-            animation: yuzme 3s ease-in-out infinite;
-        }
-
-        @keyframes yuzme {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .kutu-baslik {
-            font-size: 36px;
-            font-weight: 900;
-            margin-bottom: 8px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-        }
-
-        .kutu-alt {
-            font-size: 16px;
-            opacity: 0.95;
-            font-weight: 400;
-            margin-bottom: 25px;
-        }
-
-        .kutu-btn {
-            background: white;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 15px;
-            display: inline-block;
-            transition: 0.3s;
-        }
-
+        .kategoriler { padding: 80px 5%; text-align: center; background: #f5f7fa; }
+        .bolum-baslik { font-size: 34px; font-weight: 900; color: #2d3436; margin-bottom: 10px; }
+        .bolum-alt { color: #777; font-size: 15px; margin-bottom: 50px; }
+        .kutu-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; max-width: 1100px; margin: 0 auto; }
+        .kutu { flex: 1; min-width: 300px; max-width: 480px; height: 400px; border-radius: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: white; position: relative; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.2); transition: all 0.5s ease; }
+        .kutu::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.45); z-index: 1; transition: all 0.5s ease; }
+        .kutu:hover::before { background: rgba(0,0,0,0.2); }
+        .kutu:hover { transform: translateY(-15px); box-shadow: 0 25px 60px rgba(0,0,0,0.35); }
+        .kutu.kirtasiye { background: linear-gradient(135deg, #e31e24, #c0392b); background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&auto=format&fit=crop&q=80'); background-size: cover; background-position: center; background-blend-mode: overlay; }
+        .kutu.oyuncak { background: linear-gradient(135deg, #1a73e8, #1557b0); background-image: url('https://images.unsplash.com/photo-1558060370-d644479cb6f5?w=800&auto=format&fit=crop&q=80'); background-size: cover; background-position: center; background-blend-mode: overlay; }
+        .kutu-ic { position: relative; z-index: 2; text-align: center; }
+        .kutu-ikon { font-size: 80px; margin-bottom: 20px; text-shadow: 2px 2px 15px rgba(0,0,0,0.3); animation: yuzme 3s ease-in-out infinite; }
+        @keyframes yuzme { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .kutu-baslik { font-size: 36px; font-weight: 900; margin-bottom: 8px; text-shadow: 2px 2px 8px rgba(0,0,0,0.4); }
+        .kutu-alt { font-size: 16px; opacity: 0.95; font-weight: 400; margin-bottom: 25px; }
+        .kutu-btn { background: white; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 15px; display: inline-block; transition: 0.3s; }
         .kutu.kirtasiye .kutu-btn { color: #e31e24; }
         .kutu.oyuncak .kutu-btn { color: #1a73e8; }
+        .kutu:hover .kutu-btn { box-shadow: 0 8px 30px rgba(255,255,255,0.5); transform: scale(1.08); }
 
-        .kutu:hover .kutu-btn {
-            box-shadow: 0 8px 30px rgba(255,255,255,0.5);
-            transform: scale(1.08);
-        }
+        .one-cikanlar { padding: 70px 5%; text-align: center; background: white; }
+        .urun-mini-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1000px; margin: 0 auto; }
+        .urun-mini { background: #f5f7fa; border-radius: 15px; padding: 20px; text-align: center; flex: 1; min-width: 140px; max-width: 180px; transition: 0.3s; }
+        .urun-mini:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .urun-mini i { font-size: 40px; margin-bottom: 10px; display: block; }
+        .urun-mini h4 { font-size: 13px; font-weight: 700; margin-bottom: 5px; }
+        .urun-mini p { font-size: 11px; color: #777; }
 
-        /* ===== ONELER ===== */
-        .one-cikanlar {
-            padding: 70px 5%;
-            text-align: center;
-            background: white;
-        }
+        .iletisim { background: #f5f7fa; padding: 70px 5%; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: flex-start; }
+        .iletisim-info { flex: 1; min-width: 300px; }
+        .iletisim-info h2 { font-size: 30px; font-weight: 900; margin-bottom: 25px; }
+        .iletisim-bilgi { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; padding: 15px; background: white; border-radius: 12px; transition: 0.3s; }
+        .iletisim-bilgi:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .iletisim-bilgi i { font-size: 22px; color: #e31e24; background: #fff5f5; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .iletisim-bilgi strong { display: block; font-size: 13px; margin-bottom: 2px; }
+        .iletisim-bilgi span { font-size: 12px; color: #777; }
+        .harita { flex: 1; min-width: 300px; height: 350px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .harita iframe { width: 100%; height: 100%; border: 0; }
 
-        .urun-mini-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .wa-buton { position: fixed; bottom: 30px; right: 25px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; font-size: 30px; z-index: 50; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 6px 25px rgba(37,211,102,0.5); transition: 0.3s; animation: nabiz 2s infinite; }
+        @keyframes nabiz { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); } 70% { box-shadow: 0 0 0 20px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+        .wa-buton:hover { transform: scale(1.15); }
 
-        .urun-mini {
-            background: #f5f7fa;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            flex: 1;
-            min-width: 140px;
-            max-width: 180px;
-            transition: 0.3s;
-        }
+        footer { background: #1a1a2e; color: white; padding: 40px 5% 20px; }
+        .footer-ust { display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between; margin-bottom: 30px; }
+        .footer-kolon { flex: 1; min-width: 200px; }
+        .footer-kolon h4 { font-size: 16px; font-weight: 700; margin-bottom: 15px; color: #e31e24; }
+        .footer-kolon a { display: block; color: #bbb; text-decoration: none; font-size: 12px; margin-bottom: 8px; transition: 0.3s; }
+        .footer-kolon a:hover { color: white; }
+        .footer-alt { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; color: #888; }
+        .footer-alt span { color: #e31e24; font-weight: 700; }
 
-        .urun-mini:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .urun-mini i {
-            font-size: 40px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .urun-mini h4 {
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .urun-mini p {
-            font-size: 11px;
-            color: #777;
-        }
-
-        /* ===== ILETISIM ===== */
-        .iletisim {
-            background: #f5f7fa;
-            padding: 70px 5%;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .iletisim-info {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .iletisim-info h2 {
-            font-size: 30px;
-            font-weight: 900;
-            margin-bottom: 25px;
-        }
-
-        .iletisim-bilgi {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 18px;
-            padding: 15px;
-            background: white;
-            border-radius: 12px;
-            transition: 0.3s;
-        }
-
-        .iletisim-bilgi:hover {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .iletisim-bilgi i {
-            font-size: 22px;
-            color: #e31e24;
-            background: #fff5f5;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .iletisim-bilgi strong {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 2px;
-        }
-
-        .iletisim-bilgi span {
-            font-size: 12px;
-            color: #777;
-        }
-
-        .harita {
-            flex: 1;
-            min-width: 300px;
-            height: 350px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .harita iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* ===== WHATSAPP ===== */
-        .wa-buton {
-            position: fixed;
-            bottom: 30px;
-            right: 25px;
-            background: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            font-size: 30px;
-            z-index: 50;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 6px 25px rgba(37,211,102,0.5);
-            transition: 0.3s;
-            animation: nabiz 2s infinite;
-        }
-
-        @keyframes nabiz {
-            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
-            70% { box-shadow: 0 0 0 20px rgba(37,211,102,0); }
-            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-        }
-
-        .wa-buton:hover {
-            transform: scale(1.15);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: #1a1a2e;
-            color: white;
-            padding: 40px 5% 20px;
-        }
-
-        .footer-ust {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: space-between;
-            margin-bottom: 30px;
-        }
-
-        .footer-kolon {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .footer-kolon h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #e31e24;
-        }
-
-        .footer-kolon a {
-            display: block;
-            color: #bbb;
-            text-decoration: none;
-            font-size: 12px;
-            margin-bottom: 8px;
-            transition: 0.3s;
-        }
-
-        .footer-kolon a:hover {
-            color: white;
-        }
-
-        .footer-alt {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 11px;
-            color: #888;
-        }
-
-        .footer-alt span {
-            color: #e31e24;
-            font-weight: 700;
-        }
-
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .hero h1 { font-size: 30px; }
             .hero p { font-size: 14px; }
@@ -704,38 +135,123 @@
 </head>
 <body>
 
-    <!-- UST BAR -->
     <div class="top-bar">
+        <div><i class="fas fa-truck-fast"></i> Erenler ve cevresine <strong>ucretsiz</strong> kapiya teslimat!</div>
         <div>
-            <i class="fas fa-truck-fast"></i> Erenler ve cevresine <strong>ucretsiz</strong> kapiya teslimat!
-        </div>
-        <div class="sosyal">
-            <a href="tel:05347427560" title="Ara"><i class="fas fa-phone"></i></a>
-            <a href="https://wa.me/905347427560" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.instagram.com/tuzykirtasiyeoyuncak" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="mailto:tuzykirtasiye@gmail.com" title="E-posta"><i class="fas fa-envelope"></i></a>
+            <a href="tel:05347427560"><i class="fas fa-phone"></i></a>
+            <a href="https://wa.me/905347427560" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/tuzykirtasiyeoyuncak" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:tuzykirtasiye@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
     </div>
 
-    <!-- NAV -->
     <nav>
-        <a href="index.html" class="logo">
-            <i class="fas fa-pencil-ruler"></i> TuZy <span>Kirtasiye</span>
-        </a>
+        <a href="index.html" class="logo"><i class="fas fa-pencil-ruler"></i> TuZy <span>Kirtasiye</span></a>
         <div class="nav-links">
             <a href="index.html" class="active">Ana Sayfa</a>
             <a href="kirtasiye.html">Kirtasiye</a>
             <a href="oyuncak.html">Oyuncak</a>
             <a href="#iletisim">Iletisim</a>
-            <button class="nav-btn" onclick="window.location.href='kirtasiye.html'">
-                <i class="fas fa-shopping-bag"></i> Alisverise Basla
-            </button>
+            <button class="nav-btn" onclick="window.location.href='kirtasiye.html'"><i class="fas fa-shopping-bag"></i> Alisverise Basla</button>
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero">
         <div class="hero-ic">
-            <div class="hero-etiket">🌟 Erenler'in En Buyuk Kirtasiye ve Oyuncak Magazasi</div>
-            <h1>TuZy Kirtasiye & Oyuncak Dunyasi</h1>
-   
+            <div class="hero-etiket">Erenlerin En Buyuk Kirtasiye ve Oyuncak Magazasi</div>
+            <h1>TuZy Kirtasiye ve Oyuncak Dunyasi</h1>
+            <p>Aradiginiz en kaliteli okul malzemeleri, lisansli oyuncaklar ve kirtasiye urunleri simdi kapinizda! Siparisinizi hemen verin, ayni gun teslim alin.</p>
+            <div class="hero-btnlar">
+                <a href="kirtasiye.html" class="btn-birincil"><i class="fas fa-pencil-ruler"></i> Kirtasiye Urunleri</a>
+                <a href="oyuncak.html" class="btn-ikincil"><i class="fas fa-gamepad"></i> Oyuncak Urunleri</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ozellikler">
+        <div class="ozellik"><i class="fas fa-truck-fast"></i><strong>Kapiya Teslimat</strong><span>Ayni gun teslim</span></div>
+        <div class="ozellik"><i class="fas fa-shield-halved"></i><strong>Guvenli Odeme</strong><span>Kapida odeme</span></div>
+        <div class="ozellik"><i class="fas fa-headset"></i><strong>7/24 Destek</strong><span>WhatsApp ile</span></div>
+        <div class="ozellik"><i class="fas fa-rotate-left"></i><strong>Kolay Iade</strong><span>14 gun icinde</span></div>
+        <div class="ozellik"><i class="fas fa-star"></i><strong>Orijinal Urun</strong><span>100% garantili</span></div>
+    </section>
+
+    <section class="kategoriler">
+        <h2 class="bolum-baslik">Urun Kategorilerimiz</h2>
+        <p class="bolum-alt">Aradiginiz her sey burada! Kategori secin ve alisverise baslayin.</p>
+        <div class="kutu-container">
+            <a href="kirtasiye.html" class="kutu kirtasiye">
+                <div class="kutu-ic">
+                    <div class="kutu-ikon"><i class="fas fa-pencil-ruler"></i></div>
+                    <div class="kutu-baslik">Kirtasiye</div>
+                    <div class="kutu-alt">Okul ve Ofis Malzemeleri</div>
+                    <span class="kutu-btn">Alisverise Basla <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+            <a href="oyuncak.html" class="kutu oyuncak">
+                <div class="kutu-ic">
+                    <div class="kutu-ikon"><i class="fas fa-gamepad"></i></div>
+                    <div class="kutu-baslik">Oyuncak</div>
+                    <div class="kutu-alt">Eglenceli Oyuncak Dunyasi</div>
+                    <span class="kutu-btn">Alisverise Basla <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="one-cikanlar">
+        <h2 class="bolum-baslik">En Cok Tercih Edilenler</h2>
+        <p class="bolum-alt">Musterilerimizin en cok begendigi urun gruplari</p>
+        <div class="urun-mini-grid">
+            <div class="urun-mini"><i class="fas fa-school" style="color:#e31e24;"></i><h4>Okul Cantalari</h4><p>Ortopedik modeller</p></div>
+            <div class="urun-mini"><i class="fas fa-paint-brush" style="color:#1a73e8;"></i><h4>Boya Setleri</h4><p>Profesyonel kalite</p></div>
+            <div class="urun-mini"><i class="fas fa-car-side" style="color:#e31e24;"></i><h4>Akulu Arabalar</h4><p>Lisansli modeller</p></div>
+            <div class="urun-mini"><i class="fas fa-cubes" style="color:#1a73e8;"></i><h4>Lego Setleri</h4><p>Yapi bloklari</p></div>
+            <div class="urun-mini"><i class="fas fa-puzzle-piece" style="color:#e31e24;"></i><h4>Puzzle</h4><p>Egitici oyunlar</p></div>
+        </div>
+    </section>
+
+    <section class="iletisim" id="iletisim">
+        <div class="iletisim-info">
+            <h2>Bize Ulasin</h2>
+            <div class="iletisim-bilgi"><i class="fas fa-map-location-dot"></i><div><strong>Adres</strong><span>Yenigun Mah. 15 Temmuz Bulvari No:20/A (Yeni Cami Karsisi) Erenler / SAKARYA</span></div></div>
+            <div class="iletisim-bilgi"><i class="fas fa-phone-volume"></i><div><strong>Telefon</strong><span>0534 742 75 60</span></div></div>
+            <div class="iletisim-bilgi"><i class="fas fa-envelope"></i><div><strong>E-posta</strong><span>tuzykirtasiye@gmail.com</span></div></div>
+            <div class="iletisim-bilgi"><i class="fab fa-instagram"></i><div><strong>Instagram</strong><span>@tuzykirtasiyeoyuncak</span></div></div>
+            <div class="iletisim-bilgi"><i class="fas fa-clock"></i><div><strong>Calisma Saatleri</strong><span>Haftaici 09:00-19:00 | Cumartesi 10:00-17:00 | Pazar Kapali</span></div></div>
+        </div>
+        <div class="harita">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.5!2d30.4!3d40.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzAwLjAiTiAzMMKwMjQnMDAuMCJF!5e0!3m2!1str!2str!4v1620000000000" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <a href="https://wa.me/905347427560" class="wa-buton" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <footer>
+        <div class="footer-ust">
+            <div class="footer-kolon">
+                <h4>TuZy Kirtasiye</h4>
+                <a href="index.html">Ana Sayfa</a>
+                <a href="kirtasiye.html">Kirtasiye Urunleri</a>
+                <a href="oyuncak.html">Oyuncak Urunleri</a>
+                <a href="#iletisim">Iletisim</a>
+            </div>
+            <div class="footer-kolon">
+                <h4>Kategoriler</h4>
+                <a href="kirtasiye.html">Okul Cantalari</a>
+                <a href="kirtasiye.html">Defter ve Kalem</a>
+                <a href="kirtasiye.html">Boya Setleri</a>
+                <a href="oyuncak.html">Oyuncaklar</a>
+            </div>
+            <div class="footer-kolon">
+                <h4>Hizli Iletisim</h4>
+                <a href="tel:05347427560"><i class="fas fa-phone"></i> 0534 742 75 60</a>
+                <a href="https://wa.me/905347427560" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://www.instagram.com/tuzykirtasiyeoyuncak" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+        </div>
+        <div class="footer-alt"><p>2026 <span>TuZy Kirtasiye Oyuncak</span>. Tum Haklari Saklidir. | Web Developer: <span>Ensar</span></p></div>
+    </footer>
+
+</body>
+</html>
