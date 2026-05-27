@@ -3,91 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oyuncak Ürünleri | TuZy</title>
+    <title>Oyuncak Urunleri | TuZy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: #f5f7fa; color: #2d3436; }
-        nav { background-color: #fff; padding: 18px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 28px; font-weight: 800; color: #e31e24; text-decoration: none; }
+        body { background: #f5f7fa; color: #2d3436; padding-bottom: 100px; }
+        
+        nav { background: #fff; padding: 12px 4%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 15px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 22px; font-weight: 800; color: #e31e24; text-decoration: none; }
         .logo span { color: #1a73e8; }
-        .nav-links { display: flex; align-items: center; gap: 20px; }
-        .nav-links a { text-decoration: none; color: #555; font-weight: 600; font-size: 14px; }
+        .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: #555; font-weight: 600; font-size: 12px; }
         .nav-links a.active { color: #1a73e8; }
-        .cart-btn { background: #1a73e8; color: white; border: none; padding: 10px 20px; border-radius: 50px; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-        .cart-btn:hover { background: #1557b0; }
-        .cart-count { background: white; color: #1a73e8; padding: 2px 8px; border-radius: 20px; font-size: 12px; }
-        .page-header { background: linear-gradient(135deg, #1a73e8, #1557b0); color: white; padding: 60px 5%; text-align: center; }
-        .page-header h1 { font-size: 38px; font-weight: 800; margin-bottom: 10px; }
-        .page-header p { font-size: 16px; opacity: 0.95; }
-        .back-btn { display: inline-block; margin-top: 20px; color: white; text-decoration: none; font-weight: 600; font-size: 15px; border: 2px solid rgba(255,255,255,0.5); padding: 10px 25px; border-radius: 50px; }
-        .back-btn:hover { background: white; color: #1a73e8; }
-        .products-section { padding: 60px 5%; max-width: 1300px; margin: 0 auto; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 30px; }
-        .product-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.06); transition: 0.4s; }
-        .product-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
-        .product-img { width: 100%; height: 240px; position: relative; overflow: hidden; }
-        .product-img img { width: 100%; height: 100%; object-fit: cover; }
-        .product-badge { position: absolute; top: 15px; left: 15px; background: #1a73e8; color: white; padding: 6px 15px; font-size: 12px; font-weight: 700; border-radius: 50px; }
-        .product-info { padding: 22px; }
-        .product-cat { font-size: 11px; color: #e31e24; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
-        .product-title { font-size: 18px; font-weight: 700; color: #2d3436; margin-bottom: 10px; }
-        .product-price { font-size: 22px; font-weight: 800; color: #2d3436; margin-bottom: 15px; }
-        .product-price .old-price { text-decoration: line-through; color: #bbb; font-size: 15px; margin-left: 8px; font-weight: 500; }
-        .btn-add { background: #1a73e8; color: white; text-align: center; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 15px; border: none; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
-        .btn-add:hover { background: #1557b0; }
-        .btn-add.added { background: #25d366; }
+        .sepet-btn { background: #1a73e8; color: white; border: none; padding: 10px 18px; border-radius: 50px; font-weight: 700; font-size: 13px; cursor: pointer; white-space: nowrap; }
+        .sepet-btn:hover { background: #1557b0; }
+        
+        .header { background: linear-gradient(135deg, #1a73e8, #1557b0); color: white; padding: 40px 5%; text-align: center; }
+        .header h1 { font-size: 28px; font-weight: 800; }
+        .header p { font-size: 14px; opacity: 0.9; margin-top: 5px; }
+        .header a { color: white; text-decoration: none; border: 2px solid white; padding: 8px 18px; border-radius: 50px; font-weight: 600; font-size: 13px; display: inline-block; margin-top: 12px; }
+        
+        .urunler { padding: 30px 4%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        
+        .kart { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); }
+        .kart-img { width: 100%; height: 180px; position: relative; overflow: hidden; }
+        .kart-img img { width: 100%; height: 100%; object-fit: cover; }
+        .kart-badge { position: absolute; top: 10px; left: 10px; background: #1a73e8; color: white; padding: 4px 10px; font-size: 10px; font-weight: 700; border-radius: 50px; }
+        .kart-info { padding: 15px; }
+        .kart-kat { font-size: 10px; color: #e31e24; font-weight: 700; text-transform: uppercase; }
+        .kart-ad { font-size: 15px; font-weight: 700; margin: 4px 0 8px; line-height: 1.3; }
+        .kart-fiyat { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
+        .kart-fiyat .eski { text-decoration: line-through; color: #bbb; font-size: 13px; margin-left: 5px; font-weight: 500; }
+        .ekle-btn { background: #1a73e8; color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; width: 100%; transition: 0.2s; }
+        .ekle-btn:active { background: #25d366; transform: scale(0.97); }
 
-        /* SEPET MODAL */
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1999; display: none; }
-        .overlay.show { display: block; }
-        .cart-panel { position: fixed; top: 0; right: -450px; width: 400px; max-width: 95%; height: 100vh; background: white; z-index: 2000; transition: right 0.4s ease; padding: 25px; overflow-y: auto; display: flex; flex-direction: column; }
-        .cart-panel.open { right: 0; }
-        .cart-panel h3 { font-size: 22px; font-weight: 800; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #eee; }
-        .close-btn { position: absolute; top: 15px; right: 15px; background: #eee; border: none; width: 35px; height: 35px; border-radius: 50%; font-size: 20px; cursor: pointer; }
-        .close-btn:hover { background: #e31e24; color: white; }
-        .cart-empty-msg { text-align: center; color: #999; padding: 50px 0; }
-        .cart-empty-msg i { font-size: 60px; display: block; margin-bottom: 15px; color: #ddd; }
-        .cart-list { flex-grow: 1; overflow-y: auto; }
-        .cart-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
-        .cart-row-name { font-weight: 600; font-size: 14px; }
-        .cart-row-price { font-size: 13px; color: #777; }
-        .cart-row-del { background: none; border: none; color: #e31e24; font-size: 18px; cursor: pointer; }
-        .cart-summary { font-size: 20px; font-weight: 800; margin-top: 15px; padding-top: 15px; border-top: 3px solid #2d3436; display: flex; justify-content: space-between; }
-        .form-box { margin-top: 15px; }
-        .form-box h4 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
-        .fg { margin-bottom: 10px; }
-        .fg label { display: block; font-size: 11px; font-weight: 600; color: #555; margin-bottom: 3px; }
-        .fg input, .fg textarea, .fg select { width: 100%; padding: 10px 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 13px; background: #f9f9f9; }
-        .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: #1a73e8; outline: none; background: white; }
-        .fg textarea { min-height: 60px; resize: vertical; }
-        .btn-order { background: #25d366; color: white; text-align: center; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 15px; margin-top: 10px; border: none; cursor: pointer; width: 100%; }
-        .btn-order:hover { background: #1da851; }
-        .btn-empty { background: #eee; color: #777; text-align: center; padding: 10px; border-radius: 8px; font-weight: 600; font-size: 12px; margin-top: 8px; border: none; cursor: pointer; width: 100%; }
-        .btn-empty:hover { background: #e31e24; color: white; }
-        .success-msg { display: none; text-align: center; padding: 25px; background: #d4edda; border-radius: 12px; color: #155724; margin-top: 15px; }
-        .success-msg.show { display: block; }
-        .success-msg i { font-size: 45px; display: block; margin-bottom: 8px; }
+        /* ALT SEPET BARI */
+        .alt-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 12px 4%; box-shadow: 0 -4px 20px rgba(0,0,0,0.12); z-index: 50; display: none; align-items: center; justify-content: space-between; gap: 10px; }
+        .alt-bar.acik { display: flex; }
+        .alt-bar-sol { flex-shrink: 0; }
+        .alt-bar-sol span { display: block; font-size: 11px; color: #777; }
+        .alt-bar-sol strong { font-size: 16px; color: #2d3436; }
+        .alt-bar-btn { background: #e31e24; color: white; border: none; padding: 10px 22px; border-radius: 50px; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; }
+        .alt-bar-btn:active { transform: scale(0.95); }
 
-        /* GO TO CART BAR */
-        .cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 15px 5%; box-shadow: 0 -5px 25px rgba(0,0,0,0.15); z-index: 500; display: none; align-items: center; justify-content: space-between; }
-        .cart-bar.show { display: flex; }
-        .cart-bar-info span { display: block; }
-        .cart-bar-count { font-size: 13px; color: #777; font-weight: 600; }
-        .cart-bar-total { font-size: 20px; font-weight: 800; color: #2d3436; }
-        .btn-go-cart { background: #e31e24; color: white; padding: 14px 35px; border-radius: 50px; font-weight: 700; font-size: 16px; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; }
-        .btn-go-cart:hover { background: #c0392b; }
+        /* KARARTMA */
+        .karartma { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 150; display: none; }
+        .karartma.acik { display: block; }
+
+        /* SEPET PANEL */
+        .sepet-sayfa { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; height: 100dvh; background: white; z-index: 200; transition: right 0.35s ease; padding: 20px 15px; overflow-y: auto; box-shadow: -5px 0 25px rgba(0,0,0,0.2); }
+        .sepet-sayfa.acik { right: 0; }
+        .sepet-sayfa h3 { font-size: 20px; font-weight: 800; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 2px solid #eee; }
+        .sepet-sayfa .kapat { position: absolute; top: 12px; right: 12px; background: #f0f0f0; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .sepet-sayfa .kapat:active { background: #e31e24; color: white; }
+        .sepet-bos { text-align: center; color: #999; padding: 40px 0; }
+        .sepet-bos i { font-size: 45px; display: block; margin-bottom: 8px; }
+        .sepet-bos p { font-size: 14px; }
+        .sepet-oge { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; gap: 8px; }
+        .sepet-oge-ad { font-weight: 600; font-size: 13px; }
+        .sepet-oge-fiyat { font-size: 11px; color: #777; }
+        .sepet-oge-sil { background: none; border: none; color: #e31e24; font-size: 18px; cursor: pointer; padding: 4px; }
+        .sepet-oge-sil:active { transform: scale(1.2); }
+        .sepet-toplam { font-size: 17px; font-weight: 800; margin-top: 12px; padding-top: 12px; border-top: 2px solid #333; display: flex; justify-content: space-between; }
+        .sepet-form { margin-top: 12px; }
+        .sepet-form h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+        .sepet-form label { font-size: 10px; font-weight: 600; display: block; margin-bottom: 2px; color: #555; }
+        .sepet-form input, .sepet-form textarea, .sepet-form select { width: 100%; padding: 9px 10px; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 7px; font-size: 13px; background: #f9f9f9; }
+        .sepet-form input:focus, .sepet-form textarea:focus, .sepet-form select:focus { border-color: #1a73e8; outline: none; background: white; }
+        .sepet-form textarea { min-height: 50px; resize: vertical; }
+        .btn-siparis { background: #25d366; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; width: 100%; margin-top: 5px; }
+        .btn-siparis:active { background: #1da851; transform: scale(0.97); }
+        .btn-bosalt { background: #eee; color: #777; border: none; padding: 9px; border-radius: 8px; font-size: 12px; cursor: pointer; width: 100%; margin-top: 5px; }
+        .btn-bosalt:active { background: #e31e24; color: white; }
+        .basarili { display: none; text-align: center; padding: 18px; background: #d4edda; border-radius: 10px; margin-top: 8px; color: #155724; font-size: 13px; }
+        .basarili.goster { display: block; }
+        .basarili i { font-size: 35px; display: block; margin-bottom: 5px; }
+        
+        footer { background: #2d3436; color: white; text-align: center; padding: 18px; font-size: 11px; margin-top: 30px; }
+        footer span { color: #e31e24; font-weight: 700; }
 
         /* WHATSAPP */
-        .wa-float { position: fixed; bottom: 100px; right: 20px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; font-size: 28px; z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+        .wa-buton { position: fixed; bottom: 80px; right: 15px; background: #25d366; color: white; width: 50px; height: 50px; border-radius: 50%; font-size: 26px; z-index: 40; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+        .wa-buton:active { transform: scale(0.9); }
 
-        /* TOAST */
-        .toast { position: fixed; bottom: 170px; right: 20px; background: #2d3436; color: white; padding: 14px 24px; border-radius: 50px; font-weight: 600; font-size: 13px; z-index: 3000; opacity: 0; transition: 0.4s; }
-        .toast.show { opacity: 1; }
-
-        footer { background: #2d3436; color: white; text-align: center; padding: 20px 5% 100px; font-size: 12px; margin-top: 40px; }
-        footer span { color: #e31e24; font-weight: 700; }
+        /* MOBIL DUZELTMELER */
+        @media (max-width: 480px) {
+            nav { padding: 10px 3%; }
+            .logo { font-size: 19px; }
+            .nav-links a { font-size: 11px; }
+            .nav-links { gap: 6px; }
+            .sepet-btn { padding: 8px 14px; font-size: 12px; }
+            .header { padding: 30px 4%; }
+            .header h1 { font-size: 24px; }
+            .urunler { padding: 20px 3%; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+            .kart-img { height: 140px; }
+            .kart-info { padding: 12px; }
+            .kart-ad { font-size: 13px; }
+            .kart-fiyat { font-size: 15px; }
+            .ekle-btn { font-size: 12px; padding: 8px; }
+            .sepet-sayfa { max-width: 100%; padding: 15px; }
+            .sepet-sayfa h3 { font-size: 18px; }
+            .alt-bar { padding: 10px 3%; }
+            .alt-bar-btn { padding: 8px 16px; font-size: 13px; }
+            .wa-buton { bottom: 70px; right: 10px; width: 45px; height: 45px; font-size: 22px; }
+            body { padding-bottom: 90px; }
+        }
     </style>
 </head>
 <body>
@@ -98,249 +119,164 @@
             <a href="index.html">Ana Sayfa</a>
             <a href="kirtasiye.html">Kirtasiye</a>
             <a href="oyuncak.html" class="active">Oyuncak</a>
-            <a href="index.html#iletisim">Iletisim</a>
-            <button class="cart-btn" onclick="openCart()">
-                <i class="fas fa-shopping-cart"></i> Sepet <span class="cart-count" id="cartCount">0</span>
-            </button>
+            <button class="sepet-btn" onclick="sepetiAc()"><i class="fas fa-shopping-cart"></i> Sepet (<span id="adet">0</span>)</button>
         </div>
     </nav>
 
-    <section class="page-header">
+    <div class="header">
         <h1><i class="fas fa-gamepad"></i> Oyuncak Dunyasi</h1>
-        <p>Cocuklarinizin hayal gucunu gelistirecek birbirinden eglenceli oyuncaklar</p>
-        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Ana Sayfaya Don</a>
-    </section>
+        <p>En eglenceli oyuncaklar burada!</p>
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Ana Sayfa</a>
+    </div>
 
-    <section class="products-section">
-        <div class="products-grid">
+    <div class="urunler">
 
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="product-badge">Populer</span>
-                    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500&auto=format&fit=crop&q=60" alt="Akulu Araba" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Oyuncak</span>
-                    <h3 class="product-title">Uzaktan Kumandali Lisansli Akulu Araba Cesitleri</h3>
-                    <p class="product-price">2.499 TL <span class="old-price">2.999 TL</span></p>
-                    <button class="btn-add" onclick="addItem('Akulu Araba', 2499, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1559251606-c623743a6d76?w=500&auto=format&fit=crop&q=60" alt="Barbie" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Oyuncak</span>
-                    <h3 class="product-title">Orijinal Barbie ve Figur Bebek Karakterleri</h3>
-                    <p class="product-price">899 TL <span class="old-price">1.199 TL</span></p>
-                    <button class="btn-add" onclick="addItem('Barbie Bebek', 899, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="product-badge">Yeni</span>
-                    <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=500&auto=format&fit=crop&q=60" alt="Bisiklet" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Oyuncak</span>
-                    <h3 class="product-title">Cocuk Bisikleti ve Denge Bisikletleri</h3>
-                    <p class="product-price">1.799 TL</p>
-                    <button class="btn-add" onclick="addItem('Cocuk Bisikleti', 1799, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="product-badge">Cok Satan</span>
-                    <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=500&auto=format&fit=crop&q=60" alt="Lego" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Oyuncak</span>
-                    <h3 class="product-title">Lego ve Yapi Bloklari Cesitleri</h3>
-                    <p class="product-price">649 TL <span class="old-price">899 TL</span></p>
-                    <button class="btn-add" onclick="addItem('Lego Seti', 649, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1618842676088-c4d48a6a7c9d?w=500&auto=format&fit=crop&q=60" alt="Pelus" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Oyuncak</span>
-                    <h3 class="product-title">Yumusak Pelus Oyuncak Ayi ve Karakterler</h3>
-                    <p class="product-price">349 TL</p>
-                    <button class="btn-add" onclick="addItem('Pelus Oyuncak', 349, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img">
-                    <span class="product-badge">Indirim</span>
-                    <img src="https://images.unsplash.com/photo-1558877385-81a1c7e67d72?w=500&auto=format&fit=crop&q=60" alt="Kutu Oyunu" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-cat">Oyuncak</span>
-                    <h3 class="product-title">Egitici Kutu Oyunlari ve Puzzle Cesitleri</h3>
-                    <p class="product-price">249 TL <span class="old-price">399 TL</span></p>
-                    <button class="btn-add" onclick="addItem('Kutu Oyunu', 249, this)"><i class="fas fa-cart-plus"></i> Sepete Ekle</button>
-                </div>
-            </div>
-
+        <div class="kart">
+            <div class="kart-img"><span class="kart-badge">Populer</span><img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=500&auto=format&fit=crop&q=60" alt="Akulu"></div>
+            <div class="kart-info"><span class="kart-kat">Oyuncak</span><h3 class="kart-ad">Akulu Araba</h3><p class="kart-fiyat">2.499 TL <span class="eski">2.999 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Akulu Araba', 2499)">Sepete Ekle</button></div>
         </div>
-    </section>
+
+        <div class="kart">
+            <div class="kart-img"><img src="https://images.unsplash.com/photo-1559251606-c623743a6d76?w=500&auto=format&fit=crop&q=60" alt="Barbie"></div>
+            <div class="kart-info"><span class="kart-kat">Oyuncak</span><h3 class="kart-ad">Barbie Bebek</h3><p class="kart-fiyat">899 TL <span class="eski">1.199 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Barbie Bebek', 899)">Sepete Ekle</button></div>
+        </div>
+
+        <div class="kart">
+            <div class="kart-img"><span class="kart-badge">Yeni</span><img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=500&auto=format&fit=crop&q=60" alt="Bisiklet"></div>
+            <div class="kart-info"><span class="kart-kat">Oyuncak</span><h3 class="kart-ad">Cocuk Bisikleti</h3><p class="kart-fiyat">1.799 TL</p><button class="ekle-btn" onclick="sepeteEkle('Cocuk Bisikleti', 1799)">Sepete Ekle</button></div>
+        </div>
+
+        <div class="kart">
+            <div class="kart-img"><span class="kart-badge">Cok Satan</span><img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=500&auto=format&fit=crop&q=60" alt="Lego"></div>
+            <div class="kart-info"><span class="kart-kat">Oyuncak</span><h3 class="kart-ad">Lego Seti</h3><p class="kart-fiyat">649 TL <span class="eski">899 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Lego Seti', 649)">Sepete Ekle</button></div>
+        </div>
+
+        <div class="kart">
+            <div class="kart-img"><img src="https://images.unsplash.com/photo-1618842676088-c4d48a6a7c9d?w=500&auto=format&fit=crop&q=60" alt="Pelus"></div>
+            <div class="kart-info"><span class="kart-kat">Oyuncak</span><h3 class="kart-ad">Pelus Oyuncak</h3><p class="kart-fiyat">349 TL</p><button class="ekle-btn" onclick="sepeteEkle('Pelus Oyuncak', 349)">Sepete Ekle</button></div>
+        </div>
+
+        <div class="kart">
+            <div class="kart-img"><span class="kart-badge">Indirim</span><img src="https://images.unsplash.com/photo-1558877385-81a1c7e67d72?w=500&auto=format&fit=crop&q=60" alt="Kutu"></div>
+            <div class="kart-info"><span class="kart-kat">Oyuncak</span><h3 class="kart-ad">Kutu Oyunlari</h3><p class="kart-fiyat">249 TL <span class="eski">399 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Kutu Oyunu', 249)">Sepete Ekle</button></div>
+        </div>
+
+    </div>
 
     <!-- ALT SEPET BARI -->
-    <div class="cart-bar" id="cartBar">
-        <div class="cart-bar-info">
-            <span class="cart-bar-count" id="barCount">0 urun</span>
-            <span class="cart-bar-total" id="barTotal">0 TL</span>
+    <div class="alt-bar" id="altBar">
+        <div class="alt-bar-sol">
+            <span id="altAdet">0 urun</span>
+            <strong id="altToplam">0 TL</strong>
         </div>
-        <button class="btn-go-cart" onclick="openCart()"><i class="fas fa-shopping-basket"></i> Sepete Git</button>
+        <button class="alt-bar-btn" onclick="sepetiAc()"><i class="fas fa-shopping-basket"></i> Sepete Git</button>
     </div>
 
-    <!-- OVERLAY -->
-    <div class="overlay" id="overlay" onclick="closeCart()"></div>
+    <!-- KARARTMA -->
+    <div class="karartma" id="karartma" onclick="sepetiKapat()"></div>
 
     <!-- SEPET PANEL -->
-    <div class="cart-panel" id="cartPanel">
-        <button class="close-btn" onclick="closeCart()">&times;</button>
+    <div class="sepet-sayfa" id="sepetSayfa">
+        <button class="kapat" onclick="sepetiKapat()">&times;</button>
         <h3><i class="fas fa-shopping-basket"></i> Sepetim</h3>
-        <div class="cart-list" id="cartList">
-            <div class="cart-empty-msg"><i class="fas fa-shopping-cart"></i><p>Sepetiniz bos</p></div>
-        </div>
-        <div class="cart-summary" id="cartSummary" style="display:none;">
-            <span>Toplam:</span>
-            <span id="totalPrice">0 TL</span>
-        </div>
-        <div class="form-box" id="formBox" style="display:none;">
+        <div id="sepetListe"><div class="sepet-bos"><i class="fas fa-shopping-cart"></i><p>Sepetiniz bos</p></div></div>
+        <div class="sepet-toplam" id="sepetToplam" style="display:none;"><span>Toplam:</span><span id="toplamFiyat">0 TL</span></div>
+        <div class="sepet-form" id="sepetForm" style="display:none;">
             <h4><i class="fas fa-truck"></i> Teslimat Bilgileri</h4>
-            <div class="fg"><label>Ad Soyad *</label><input type="text" id="nameInp" placeholder="Adiniz soyadiniz"></div>
-            <div class="fg"><label>Telefon *</label><input type="tel" id="phoneInp" placeholder="05XX XXX XX XX"></div>
-            <div class="fg"><label>Adres *</label><textarea id="addrInp" placeholder="Tam adresiniz"></textarea></div>
-            <div class="fg"><label>Odeme Yontemi *</label><select id="payInp"><option value="">Seciniz</option><option value="Kapida Nakit">Kapida Nakit</option><option value="Kapida Kart">Kapida Kredi Karti</option><option value="Havale">Havale / EFT</option></select></div>
-            <button class="btn-order" onclick="placeOrder()"><i class="fas fa-check-circle"></i> Siparisi Tamamla</button>
-            <button class="btn-empty" onclick="emptyCart()"><i class="fas fa-trash"></i> Sepeti Bosalt</button>
-            <div class="success-msg" id="successMsg"><i class="fas fa-check-circle"></i><strong>Siparis Alindi!</strong><p>En kisa surede donecegiz.</p></div>
+            <label>Ad Soyad *</label><input type="text" id="adInp" placeholder="Adiniz soyadiniz">
+            <label>Telefon *</label><input type="tel" id="telInp" placeholder="05XX XXX XX XX">
+            <label>Adres *</label><textarea id="adresInp" placeholder="Tam adresiniz"></textarea>
+            <label>Odeme Yontemi *</label><select id="odemeInp"><option value="">Seciniz</option><option>Kapida Nakit</option><option>Kapida Kart</option><option>Havale/EFT</option></select>
+            <button class="btn-siparis" onclick="siparisVer()"><i class="fas fa-check-circle"></i> Siparisi Tamamla</button>
+            <button class="btn-bosalt" onclick="sepetiBosalt()"><i class="fas fa-trash"></i> Sepeti Bosalt</button>
+            <div class="basarili" id="basarili"><i class="fas fa-check-circle"></i><strong>Siparis Alindi!</strong><p>En kisa surede donecegiz.</p></div>
         </div>
     </div>
 
-    <!-- TOAST -->
-    <div class="toast" id="toast"></div>
-
     <!-- WHATSAPP -->
-    <a href="https://wa.me/905347427560" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/905347427560" class="wa-buton" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <footer><p>© 2026 <span>TuZy Kirtasiye Oyuncak</span>. Tum Haklari Saklidir. | Web Developer: Ensar</p></footer>
+    <footer><p>© 2026 <span>TuZy Kirtasiye Oyuncak</span> | Web Developer: Ensar</p></footer>
 
     <script>
-        var cart = [];
+        var sepet = [];
 
-        function addItem(name, price, btn) {
-            cart.push({ name: name, price: price });
-            refreshCart();
-            refreshBar();
-            btn.classList.add('added');
-            btn.innerHTML = '<i class="fas fa-check"></i> Eklendi';
-            setTimeout(function() {
-                btn.classList.remove('added');
-                btn.innerHTML = '<i class="fas fa-cart-plus"></i> Sepete Ekle';
-            }, 1500);
-            showMsg('Urun sepete eklendi!');
+        function sepeteEkle(ad, fiyat) {
+            sepet.push({ ad: ad, fiyat: fiyat });
+            guncelle();
+            alert(ad + ' sepete eklendi! (' + fiyat + ' TL)');
         }
 
-        function refreshCart() {
-            document.getElementById('cartCount').textContent = cart.length;
-            var list = document.getElementById('cartList');
-            var summary = document.getElementById('cartSummary');
-            var form = document.getElementById('formBox');
+        function guncelle() {
+            document.getElementById('adet').textContent = sepet.length;
+            var liste = document.getElementById('sepetListe');
+            var toplamDiv = document.getElementById('sepetToplam');
+            var formDiv = document.getElementById('sepetForm');
 
-            if (cart.length === 0) {
-                list.innerHTML = '<div class="cart-empty-msg"><i class="fas fa-shopping-cart"></i><p>Sepetiniz bos</p></div>';
-                summary.style.display = 'none';
-                form.style.display = 'none';
+            if (sepet.length === 0) {
+                liste.innerHTML = '<div class="sepet-bos"><i class="fas fa-shopping-cart"></i><p>Sepetiniz bos</p></div>';
+                toplamDiv.style.display = 'none';
+                formDiv.style.display = 'none';
+                document.getElementById('altBar').classList.remove('acik');
             } else {
-                var h = '';
-                var t = 0;
-                for (var i = 0; i < cart.length; i++) {
-                    h += '<div class="cart-row"><div><div class="cart-row-name">' + cart[i].name + '</div><div class="cart-row-price">' + cart[i].price + ' TL</div></div><button class="cart-row-del" onclick="delItem(' + i + ')"><i class="fas fa-times-circle"></i></button></div>';
-                    t += cart[i].price;
+                var html = '';
+                var toplam = 0;
+                for (var i = 0; i < sepet.length; i++) {
+                    html += '<div class="sepet-oge"><div><div class="sepet-oge-ad">' + sepet[i].ad + '</div><div class="sepet-oge-fiyat">' + sepet[i].fiyat + ' TL</div></div><button class="sepet-oge-sil" onclick="urunSil(' + i + ')"><i class="fas fa-times-circle"></i></button></div>';
+                    toplam += sepet[i].fiyat;
                 }
-                list.innerHTML = h;
-                summary.style.display = 'flex';
-                document.getElementById('totalPrice').textContent = t + ' TL';
-                form.style.display = 'block';
+                liste.innerHTML = html;
+                toplamDiv.style.display = 'flex';
+                document.getElementById('toplamFiyat').textContent = toplam + ' TL';
+                formDiv.style.display = 'block';
+
+                document.getElementById('altBar').classList.add('acik');
+                document.getElementById('altAdet').textContent = sepet.length + ' urun';
+                document.getElementById('altToplam').textContent = toplam + ' TL';
             }
         }
 
-        function refreshBar() {
-            var bar = document.getElementById('cartBar');
-            if (cart.length === 0) {
-                bar.classList.remove('show');
-            } else {
-                bar.classList.add('show');
-                var t = 0;
-                for (var i = 0; i < cart.length; i++) { t += cart[i].price; }
-                document.getElementById('barCount').textContent = cart.length + ' urun';
-                document.getElementById('barTotal').textContent = t + ' TL';
-            }
+        function urunSil(index) {
+            sepet.splice(index, 1);
+            guncelle();
         }
 
-        function delItem(index) {
-            cart.splice(index, 1);
-            refreshCart();
-            refreshBar();
-            showMsg('Urun cikarildi');
+        function sepetiBosalt() {
+            sepet = [];
+            guncelle();
+            document.getElementById('basarili').classList.remove('goster');
         }
 
-        function emptyCart() {
-            cart = [];
-            refreshCart();
-            refreshBar();
-            document.getElementById('successMsg').classList.remove('show');
-            showMsg('Sepet bosaltildi');
+        function sepetiAc() {
+            document.getElementById('sepetSayfa').classList.add('acik');
+            document.getElementById('karartma').classList.add('acik');
         }
 
-        function openCart() {
-            document.getElementById('cartPanel').classList.add('open');
-            document.getElementById('overlay').classList.add('show');
+        function sepetiKapat() {
+            document.getElementById('sepetSayfa').classList.remove('acik');
+            document.getElementById('karartma').classList.remove('acik');
         }
 
-        function closeCart() {
-            document.getElementById('cartPanel').classList.remove('open');
-            document.getElementById('overlay').classList.remove('show');
-        }
+        function siparisVer() {
+            var ad = document.getElementById('adInp').value;
+            var tel = document.getElementById('telInp').value;
+            var adres = document.getElementById('adresInp').value;
+            var odeme = document.getElementById('odemeInp').value;
 
-        function placeOrder() {
-            var name = document.getElementById('nameInp').value;
-            var phone = document.getElementById('phoneInp').value;
-            var addr = document.getElementById('addrInp').value;
-            var pay = document.getElementById('payInp').value;
-
-            if (!name || !phone || !addr || !pay) {
-                showMsg('Lutfen tum alanlari doldurun!');
+            if (!ad || !tel || !adres || !odeme) {
+                alert('Lutfen tum alanlari doldurun!');
                 return;
             }
 
-            document.getElementById('successMsg').classList.add('show');
-            document.getElementById('formBox').style.display = 'none';
-            document.getElementById('cartList').innerHTML = '';
-            document.getElementById('cartSummary').style.display = 'none';
-            document.getElementById('cartCount').textContent = '0';
-            cart = [];
-            refreshBar();
-            showMsg('Siparis basariyla alindi!');
-            setTimeout(function() { closeCart(); }, 3000);
-        }
-
-        function showMsg(text) {
-            var t = document.getElementById('toast');
-            t.textContent = text;
-            t.classList.add('show');
-            setTimeout(function() { t.classList.remove('show'); }, 2500);
+            document.getElementById('basarili').classList.add('goster');
+            document.getElementById('sepetForm').style.display = 'none';
+            sepet = [];
+            document.getElementById('adet').textContent = '0';
+            document.getElementById('sepetListe').innerHTML = '';
+            document.getElementById('sepetToplam').style.display = 'none';
+            document.getElementById('altBar').classList.remove('acik');
+            alert('Siparisiniz basariyla alindi! En kisa surede sizi arayacagiz.');
+            setTimeout(function() { sepetiKapat(); }, 2000);
         }
     </script>
 </body>
