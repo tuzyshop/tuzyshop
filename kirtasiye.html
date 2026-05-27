@@ -32,16 +32,13 @@
         .kart-fiyat .eski { text-decoration: line-through; color: #bbb; font-size: 13px; margin-left: 5px; font-weight: 500; }
         .ekle-btn { background: #e31e24; color: white; border: none; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; width: 100%; transition: 0.2s; }
         .ekle-btn:active { background: #25d366; transform: scale(0.97); }
-
         .alt-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 12px 4%; box-shadow: 0 -4px 20px rgba(0,0,0,0.12); z-index: 50; display: none; align-items: center; justify-content: space-between; gap: 10px; }
         .alt-bar.acik { display: flex; }
         .alt-bar-sol span { display: block; font-size: 11px; color: #777; }
         .alt-bar-sol strong { font-size: 16px; color: #2d3436; }
         .alt-bar-btn { background: #e31e24; color: white; border: none; padding: 10px 22px; border-radius: 50px; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; }
-
         .karartma { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 150; display: none; }
         .karartma.acik { display: block; }
-
         .sepet-sayfa { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100vh; height: 100dvh; background: white; z-index: 200; transition: right 0.35s ease; padding: 20px 15px; overflow-y: auto; box-shadow: -5px 0 25px rgba(0,0,0,0.2); }
         .sepet-sayfa.acik { right: 0; }
         .sepet-sayfa h3 { font-size: 20px; font-weight: 800; margin-bottom: 15px; padding-bottom: 12px; border-bottom: 2px solid #eee; }
@@ -63,29 +60,18 @@
         .basarili { display: none; text-align: center; padding: 18px; background: #d4edda; border-radius: 10px; margin-top: 8px; color: #155724; font-size: 13px; }
         .basarili.goster { display: block; }
         .basarili i { font-size: 35px; display: block; margin-bottom: 5px; }
-        footer { background: #2d3436; color: white; text-align: center; padding: 18px; font-size: 11px; margin-top: 30px; }
+        .iletisim-alt { background: white; padding: 30px 5%; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; text-align: center; margin-top: 40px; }
+        .iletisim-kart { background: #f5f7fa; padding: 20px; border-radius: 15px; min-width: 150px; flex: 1; max-width: 200px; }
+        .iletisim-kart i { font-size: 28px; margin-bottom: 8px; display: block; }
+        .iletisim-kart h4 { font-size: 13px; margin-bottom: 3px; }
+        .iletisim-kart p { font-size: 11px; color: #777; }
+        .iletisim-kart.wp i { color: #25d366; }
+        .iletisim-kart.tel i { color: #1a73e8; }
+        .iletisim-kart.ig i { color: #e31e24; }
+        footer { background: #2d3436; color: white; text-align: center; padding: 18px; font-size: 11px; }
         footer span { color: #e31e24; font-weight: 700; }
         .wa-buton { position: fixed; bottom: 80px; right: 15px; background: #25d366; color: white; width: 50px; height: 50px; border-radius: 50%; font-size: 26px; z-index: 40; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
-
-        @media (max-width: 480px) {
-            nav { padding: 10px 3%; }
-            .logo { font-size: 19px; }
-            .nav-links a { font-size: 11px; }
-            .nav-links { gap: 6px; }
-            .sepet-btn { padding: 8px 14px; font-size: 12px; }
-            .header { padding: 30px 4%; }
-            .header h1 { font-size: 24px; }
-            .urunler { padding: 20px 3%; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-            .kart-img { height: 140px; }
-            .kart-info { padding: 12px; }
-            .kart-ad { font-size: 13px; }
-            .kart-fiyat { font-size: 15px; }
-            .ekle-btn { font-size: 12px; padding: 8px; }
-            .sepet-sayfa { max-width: 100%; padding: 15px; }
-            .alt-bar { padding: 10px 3%; }
-            .wa-buton { bottom: 70px; right: 10px; width: 45px; height: 45px; font-size: 22px; }
-            body { padding-bottom: 90px; }
-        }
+        @media (max-width: 480px) { nav { padding: 10px 3%; } .logo { font-size: 19px; } .nav-links a { font-size: 11px; } .nav-links { gap: 6px; } .sepet-btn { padding: 8px 14px; font-size: 12px; } .header { padding: 30px 4%; } .header h1 { font-size: 24px; } .urunler { padding: 20px 3%; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; } .kart-img { height: 140px; } .kart-info { padding: 12px; } .kart-ad { font-size: 13px; } .kart-fiyat { font-size: 15px; } .ekle-btn { font-size: 12px; padding: 8px; } .sepet-sayfa { max-width: 100%; padding: 15px; } .alt-bar { padding: 10px 3%; } .wa-buton { bottom: 70px; right: 10px; width: 45px; height: 45px; font-size: 22px; } body { padding-bottom: 90px; } }
     </style>
 </head>
 <body>
@@ -107,52 +93,44 @@
     </div>
 
     <div class="urunler">
-
         <div class="kart">
-            <div class="kart-img"><span class="kart-badge">Yeni Sezon</span><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=60" alt="Canta"></div>
+            <div class="kart-img"><span class="kart-badge">Yeni Sezon</span><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=60" alt="Canta" loading="lazy"></div>
             <div class="kart-info"><span class="kart-kat">Kirtasiye</span><h3 class="kart-ad">Ortopedik Okul Cantasi</h3><p class="kart-fiyat">699 TL <span class="eski">899 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Okul Cantasi', 699)">Sepete Ekle</button></div>
         </div>
-
         <div class="kart">
-            <div class="kart-img"><span class="kart-badge">Cok Satan</span><img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=500&auto=format&fit=crop&q=60" alt="Defter"></div>
+            <div class="kart-img"><span class="kart-badge">Cok Satan</span><img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=500&auto=format&fit=crop&q=60" alt="Defter" loading="lazy"></div>
             <div class="kart-info"><span class="kart-kat">Kirtasiye</span><h3 class="kart-ad">Lisansli Defter ve Kalem Seti</h3><p class="kart-fiyat">249 TL <span class="eski">349 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Defter Seti', 249)">Sepete Ekle</button></div>
         </div>
-
         <div class="kart">
-            <div class="kart-img"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&auto=format&fit=crop&q=60" alt="Boya"></div>
+            <div class="kart-img"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&auto=format&fit=crop&q=60" alt="Boya" loading="lazy"></div>
             <div class="kart-info"><span class="kart-kat">Sanatsal</span><h3 class="kart-ad">Akrilik ve Sulu Boya Seti</h3><p class="kart-fiyat">179 TL</p><button class="ekle-btn" onclick="sepeteEkle('Boya Seti', 179)">Sepete Ekle</button></div>
         </div>
-
         <div class="kart">
-            <div class="kart-img"><span class="kart-badge">Indirim</span><img src="https://images.unsplash.com/photo-1586766993160-9c2f4e0b62e1?w=500&auto=format&fit=crop&q=60" alt="Kalem"></div>
+            <div class="kart-img"><span class="kart-badge">Indirim</span><img src="https://images.unsplash.com/photo-1586766993160-9c2f4e0b62e1?w=500&auto=format&fit=crop&q=60" alt="Kalem" loading="lazy"></div>
             <div class="kart-info"><span class="kart-kat">Kirtasiye</span><h3 class="kart-ad">Lisansli Kalem ve Silgi Seti</h3><p class="kart-fiyat">89 TL <span class="eski">129 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Kalem Seti', 89)">Sepete Ekle</button></div>
         </div>
-
         <div class="kart">
-            <div class="kart-img"><img src="https://images.unsplash.com/photo-1526768759651-10c9e34be3da?w=500&auto=format&fit=crop&q=60" alt="Beslenme"></div>
+            <div class="kart-img"><img src="https://images.unsplash.com/photo-1526768759651-10c9e34be3da?w=500&auto=format&fit=crop&q=60" alt="Beslenme" loading="lazy"></div>
             <div class="kart-info"><span class="kart-kat">Kirtasiye</span><h3 class="kart-ad">Termal Beslenme Cantasi</h3><p class="kart-fiyat">349 TL</p><button class="ekle-btn" onclick="sepeteEkle('Beslenme Cantasi', 349)">Sepete Ekle</button></div>
         </div>
-
         <div class="kart">
-            <div class="kart-img"><span class="kart-badge">Yeni</span><img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=500&auto=format&fit=crop&q=60" alt="Set"></div>
+            <div class="kart-img"><span class="kart-badge">Yeni</span><img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=500&auto=format&fit=crop&q=60" alt="Set" loading="lazy"></div>
             <div class="kart-info"><span class="kart-kat">Kirtasiye</span><h3 class="kart-ad">Okula Donus Ozel Paket</h3><p class="kart-fiyat">449 TL <span class="eski">599 TL</span></p><button class="ekle-btn" onclick="sepeteEkle('Kirtasiye Seti', 449)">Sepete Ekle</button></div>
         </div>
-
     </div>
 
-    <!-- ALT SEPET BARI -->
+    <div class="iletisim-alt">
+        <div class="iletisim-kart wp"><i class="fab fa-whatsapp"></i><h4>WhatsApp</h4><p>0534 742 75 60</p></div>
+        <div class="iletisim-kart tel"><i class="fas fa-phone"></i><h4>Telefon</h4><p>0534 742 75 60</p></div>
+        <div class="iletisim-kart ig"><i class="fab fa-instagram"></i><h4>Instagram</h4><p>@tuzykirtasiyeoyuncak</p></div>
+    </div>
+
     <div class="alt-bar" id="altBar">
-        <div class="alt-bar-sol">
-            <span id="altAdet">0 urun</span>
-            <strong id="altToplam">0 TL</strong>
-        </div>
+        <div class="alt-bar-sol"><span id="altAdet">0 urun</span><strong id="altToplam">0 TL</strong></div>
         <button class="alt-bar-btn" onclick="sepetiAc()"><i class="fas fa-shopping-basket"></i> Sepete Git</button>
     </div>
-
-    <!-- KARARTMA -->
     <div class="karartma" id="karartma" onclick="sepetiKapat()"></div>
 
-    <!-- SEPET PANEL -->
     <div class="sepet-sayfa" id="sepetSayfa">
         <button class="kapat" onclick="sepetiKapat()">&times;</button>
         <h3><i class="fas fa-shopping-basket"></i> Sepetim</h3>
@@ -170,26 +148,23 @@
         </div>
     </div>
 
-    <!-- WHATSAPP -->
     <a href="https://wa.me/905347427560" class="wa-buton" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <footer><p>2026 <span>TuZy Kirtasiye Oyuncak</span> | Web Developer: <span>Ensar</span></p></footer>
 
     <script>
-        var sepet = [];
-
+        var sepet = JSON.parse(localStorage.getItem('tuzySepet')) || [];
+        function kaydet() { localStorage.setItem('tuzySepet', JSON.stringify(sepet)); }
         function sepeteEkle(ad, fiyat) {
             sepet.push({ ad: ad, fiyat: fiyat });
+            kaydet();
             guncelle();
             alert(ad + ' sepete eklendi! (' + fiyat + ' TL)');
         }
-
         function guncelle() {
             document.getElementById('adet').textContent = sepet.length;
             var liste = document.getElementById('sepetListe');
             var toplamDiv = document.getElementById('sepetToplam');
             var formDiv = document.getElementById('sepetForm');
-
             if (sepet.length === 0) {
                 liste.innerHTML = '<div class="sepet-bos"><i class="fas fa-shopping-cart"></i><p>Sepetiniz bos</p></div>';
                 toplamDiv.style.display = 'none';
@@ -206,55 +181,32 @@
                 toplamDiv.style.display = 'flex';
                 document.getElementById('toplamFiyat').textContent = toplam + ' TL';
                 formDiv.style.display = 'block';
-
                 document.getElementById('altBar').classList.add('acik');
                 document.getElementById('altAdet').textContent = sepet.length + ' urun';
                 document.getElementById('altToplam').textContent = toplam + ' TL';
             }
         }
-
-        function urunSil(index) {
-            sepet.splice(index, 1);
-            guncelle();
-        }
-
-        function sepetiBosalt() {
-            sepet = [];
-            guncelle();
-            document.getElementById('basarili').classList.remove('goster');
-        }
-
-        function sepetiAc() {
-            document.getElementById('sepetSayfa').classList.add('acik');
-            document.getElementById('karartma').classList.add('acik');
-        }
-
-        function sepetiKapat() {
-            document.getElementById('sepetSayfa').classList.remove('acik');
-            document.getElementById('karartma').classList.remove('acik');
-        }
-
+        function urunSil(index) { sepet.splice(index, 1); kaydet(); guncelle(); }
+        function sepetiBosalt() { sepet = []; kaydet(); guncelle(); document.getElementById('basarili').classList.remove('goster'); }
+        function sepetiAc() { document.getElementById('sepetSayfa').classList.add('acik'); document.getElementById('karartma').classList.add('acik'); }
+        function sepetiKapat() { document.getElementById('sepetSayfa').classList.remove('acik'); document.getElementById('karartma').classList.remove('acik'); }
         function siparisVer() {
             var ad = document.getElementById('adInp').value;
             var tel = document.getElementById('telInp').value;
             var adres = document.getElementById('adresInp').value;
             var odeme = document.getElementById('odemeInp').value;
-
-            if (!ad || !tel || !adres || !odeme) {
-                alert('Lutfen tum alanlari doldurun!');
-                return;
-            }
-
+            if (!ad || !tel || !adres || !odeme) { alert('Lutfen tum alanlari doldurun!'); return; }
             document.getElementById('basarili').classList.add('goster');
             document.getElementById('sepetForm').style.display = 'none';
             sepet = [];
-            document.getElementById('adet').textContent = '0';
-            document.getElementById('sepetListe').innerHTML = '';
+            kaydet();
+            guncelle();
             document.getElementById('sepetToplam').style.display = 'none';
             document.getElementById('altBar').classList.remove('acik');
             alert('Siparisiniz basariyla alindi! En kisa surede sizi arayacagiz.');
             setTimeout(function() { sepetiKapat(); }, 2000);
         }
+        guncelle();
     </script>
 </body>
 </html>
